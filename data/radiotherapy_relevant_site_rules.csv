@@ -1,0 +1,15 @@
+﻿cancer_code,label,rt_relevance,rt_weight,main_rt_set,rationale
+1,"Lip, oral cavity",high,1,1,Head and neck cancer site with common radiotherapy use.
+3,Oropharynx,high,1,1,Head and neck cancer site with common radiotherapy use.
+4,Nasopharynx,high,1,1,Head and neck cancer site with common radiotherapy use.
+5,Hypopharynx,high,1,1,Head and neck cancer site with common radiotherapy use.
+6,Oesophagus,moderate_high,1,1,Radiotherapy or chemoradiotherapy is commonly part of treatment in selected settings.
+9,Rectum,moderate_high,1,1,Rectal cancer is separated from grouped colorectum where available.
+14,Larynx,high,1,1,Head and neck cancer site with common radiotherapy use.
+15,"Trachea, bronchus and lung",moderate,1,1,Radiotherapy is used across curative and palliative lung cancer pathways.
+20,Breast,high,1,1,Radiotherapy is a core component after breast-conserving surgery and in selected postmastectomy settings.
+23,Cervix uteri,high,1,1,Radiotherapy and brachytherapy are central to treatment of locally advanced disease.
+24,Corpus uteri,moderate,1,1,Radiotherapy is used in selected adjuvant and advanced settings.
+27,Prostate,moderate_high,1,1,External-beam radiotherapy and brachytherapy are common prostate cancer treatments.
+30,Bladder,moderate,1,1,Radiotherapy is used in bladder-preserving and palliative settings.
+31,"Brain, central nervous system",high,1,1,Radiotherapy is central for many primary CNS tumour pathways.
