@@ -495,7 +495,7 @@ def make_figure() -> dict[str, Path]:
     annotate_top_map_countries(ax_a, df, centroids)
     ax_a.text(
         0.030,
-        -0.035,
+        0.135,
         f"{complete_cases} complete-case countries\n{highlow_count} high-growth/low-resource countries",
         transform=ax_a.transAxes,
         fontsize=5.8,
@@ -508,7 +508,7 @@ def make_figure() -> dict[str, Path]:
 
     sm = ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
-    cax = ax_a.inset_axes([0.030, -0.120, 0.330, 0.034])
+    cax = ax_a.inset_axes([0.335, -0.105, 0.330, 0.034])
     cbar = fig.colorbar(sm, cax=cax, orientation="horizontal", ticks=[0.01, 0.05, 0.1, 0.5, 1, 5])
     cbar.set_label("MV units per 1000 projected RT-relevant cases, 2050", fontsize=5.6, labelpad=1.0)
     cbar.ax.set_xticklabels(["0.01", "0.05", "0.1", "0.5", "1", "5"])
@@ -519,7 +519,7 @@ def make_figure() -> dict[str, Path]:
         Patch(facecolor=(1, 1, 1, 0), edgecolor=PALETTE["signal_dark"], linewidth=0.9, label="High growth + low resource"),
         Patch(facecolor=PALETTE["missing"], edgecolor=PALETTE["neutral_mid"], hatch="////", linewidth=0.45, label="DIRAC missing"),
     ]
-    ax_a.legend(handles=legend_handles, loc="lower right", bbox_to_anchor=(0.985, 0.055), borderpad=0.2, handlelength=1.2)
+    ax_a.legend(handles=legend_handles, loc="lower left", bbox_to_anchor=(0.030, 0.030), borderpad=0.2, handlelength=1.2)
 
     add_panel_label(ax_b, "b", -0.16, 1.015)
     draw_panel_b(ax_b, df, resource_q25)
