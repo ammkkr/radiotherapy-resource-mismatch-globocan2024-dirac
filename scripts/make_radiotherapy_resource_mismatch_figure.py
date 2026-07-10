@@ -494,18 +494,21 @@ def make_figure() -> dict[str, Path]:
     centroids = draw_world_map(ax_a, df, cmap, norm)
     annotate_top_map_countries(ax_a, df, centroids)
     ax_a.text(
-        0.012,
-        0.050,
-        f"{complete_cases} complete-case countries; {highlow_count} high-growth/low-resource countries",
+        0.030,
+        -0.035,
+        f"{complete_cases} complete-case countries\n{highlow_count} high-growth/low-resource countries",
         transform=ax_a.transAxes,
         fontsize=5.8,
         color=PALETTE["black"],
+        ha="left",
+        va="bottom",
+        linespacing=1.15,
         bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.78, "pad": 1.2},
     )
 
     sm = ScalarMappable(norm=norm, cmap=cmap)
     sm.set_array([])
-    cax = ax_a.inset_axes([0.335, -0.105, 0.330, 0.034])
+    cax = ax_a.inset_axes([0.030, -0.120, 0.330, 0.034])
     cbar = fig.colorbar(sm, cax=cax, orientation="horizontal", ticks=[0.01, 0.05, 0.1, 0.5, 1, 5])
     cbar.set_label("MV units per 1000 projected RT-relevant cases, 2050", fontsize=5.6, labelpad=1.0)
     cbar.ax.set_xticklabels(["0.01", "0.05", "0.1", "0.5", "1", "5"])
