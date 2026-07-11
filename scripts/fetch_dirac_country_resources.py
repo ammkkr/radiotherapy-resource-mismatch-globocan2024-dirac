@@ -173,7 +173,7 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
         "sum_rt_centres_with_rt": sum(int(row["rt_centres_with_rt"] or 0) for row in records),
         "sum_mv_therapy_units": sum(int(row["mv_therapy_units"] or 0) for row in records),
         "sum_brachytherapy_units": sum(int(row["brachytherapy_units"] or 0) for row in records),
-        "countries_with_zero_mv_units": sum(int(row["mv_therapy_units"] or 0) == 0 for row in records),
+        "countries_with_no_reported_mv_units": sum(int(row["mv_therapy_units"] or 0) == 0 for row in records),
     }
     return summary
 
@@ -197,7 +197,7 @@ def write_codebook(path: Path, summary: dict[str, Any], raw_path: Path, csv_path
         f"- Sum RT centres with RT: {summary['sum_rt_centres_with_rt']}",
         f"- Sum MV therapy units: {summary['sum_mv_therapy_units']}",
         f"- Sum brachytherapy units: {summary['sum_brachytherapy_units']}",
-        f"- Countries with zero MV therapy units: {summary['countries_with_zero_mv_units']}",
+        f"- Countries with no reported MV therapy units: {summary['countries_with_no_reported_mv_units']}",
         "",
         "Variables:",
         "",

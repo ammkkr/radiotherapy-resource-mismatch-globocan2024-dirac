@@ -381,7 +381,7 @@ def write_report(summary: dict[str, Any], top_rows: list[dict[str, Any]], paths:
         "",
         "## Interpretation Notes",
         "",
-        "- Countries absent from the DIRAC country table are treated as missing resource observations, not as zero-resource countries.",
+        "- Countries absent from the DIRAC country table are treated as missing resource observations without assigned resource-density values.",
         "- The primary mismatch analysis is therefore a complete-case comparison among GLOBOCAN country records with a DIRAC ISO3 match.",
         "",
         "## Top 10 Countries by Selected-Site Cases per MV Unit",

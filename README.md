@@ -1,4 +1,4 @@
-# Cancer Tomorrow Projections and Current Radiotherapy MV-Unit Density
+# Cancer Tomorrow Projections and Latest-Reported Radiotherapy MV-Unit Density
 
 This repository contains the derived data, figure source data, and analysis code
 for a country-level analysis linking IARC Global Cancer Observatory Cancer
@@ -8,7 +8,7 @@ version used for the extracted Cancer Tomorrow projections was 2024.
 ## Study Question
 
 Which countries with matched DIRAC data have both high projected growth in
-selected cancer-site incidence by 2050 and lower-quartile current megavoltage
+selected cancer-site incidence by 2050 and lower-quartile latest-reported megavoltage
 (MV) unit density?
 
 ## Repository Contents
@@ -30,6 +30,8 @@ selected cancer-site incidence by 2050 and lower-quartile current megavoltage
   Figure 1b country pressure profiles.
 - `figures/`: exported Figure 1 files in SVG, PDF, and PNG formats.
 - `scripts/`: analysis and figure-generation scripts.
+- `docs/expanded_methods.md`: expanded reproducibility methods for the public
+  code repository; this file is not a formal journal supplement.
 - `docs/qc_report.md`: merge and threshold quality-control summary.
 - `MANIFEST.csv` and `checksums_sha256.txt`: file inventory and checksums.
 

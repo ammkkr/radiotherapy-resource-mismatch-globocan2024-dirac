@@ -397,7 +397,7 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
     ax.set_xlim(0.008, 0.75)
     ax.set_xticks([0.01, 0.03, 0.1, 0.3, 0.75])
     ax.set_xticklabels(["0.01", "0.03", "0.1", "0.3", "0.75"])
-    ax.set_xlabel("MV units per 1000 selected-site cases, 2050", labelpad=5.0)
+    ax.set_xlabel("Latest-reported MV units per 1000 selected-site cases, 2050", labelpad=5.0)
     ax.tick_params(axis="y", length=0, pad=2)
 
     for yi, (_, row) in zip(y, top.iterrows()):
@@ -432,6 +432,7 @@ def make_region_summary(df: pd.DataFrame) -> pd.DataFrame:
                 "who_region": region,
                 "matched_countries": int(len(sub)),
                 "acceleration_risk_countries": int((sub["acceleration_risk"].astype(str) == "1").sum()),
+                "acceleration_risk_share": int((sub["acceleration_risk"].astype(str) == "1").sum()) / len(sub) if len(sub) else math.nan,
                 "selected_site_cases_2024_matched": cases_2024,
                 "selected_site_cases_2050_matched": cases_2050,
                 "selected_site_case_increase_2050_matched": cases_2050 - cases_2024,
@@ -445,36 +446,38 @@ def make_region_summary(df: pd.DataFrame) -> pd.DataFrame:
 
 def draw_panel_c(ax: plt.Axes, region_df: pd.DataFrame, growth_q75: float, resource_q25: float) -> None:
     plot_df = region_df[region_df["who_region"].isin(REGION_COLORS)].copy()
-    x = plot_df["selected_site_relative_case_growth_2050_matched"].to_numpy()
-    y = plot_df["mv_units_per_1000_selected_site_cases_2050_matched"].to_numpy()
-    cases = plot_df["selected_site_cases_2050_matched"].to_numpy()
-    sizes = 120 + 500 * np.sqrt(cases / np.nanmax(cases))
+    plot_df = plot_df.sort_values(["acceleration_risk_share", "acceleration_risk_countries"], ascending=True)
+    y = np.arange(len(plot_df))
+    x = 100 * plot_df["acceleration_risk_share"].to_numpy()
+    matched = plot_df["matched_countries"].to_numpy()
+    sizes = 55 + 255 * np.sqrt(matched / np.nanmax(matched))
 
-    ax.axvspan(growth_q75, max(max(x) * 1.06, growth_q75 * 1.15), color=PALETTE["signal"], alpha=0.055, zorder=0)
-    ax.axhspan(0.05, resource_q25, color=PALETTE["signal"], alpha=0.055, zorder=0)
-    ax.axvline(growth_q75, color=PALETTE["signal_dark"], lw=0.75, ls="--")
-    ax.axhline(resource_q25, color=PALETTE["signal_dark"], lw=0.75, ls="--")
+    ax.axvspan(0, 25, color=PALETTE["neutral_pale"], alpha=0.55, zorder=0)
+    ax.axvline(25, color=PALETTE["neutral_mid"], lw=0.55, ls=":")
+    ax.hlines(y, 0, x, color=PALETTE["neutral_light"], lw=1.4, zorder=1)
 
-    for (_, row), xi, yi, si in zip(plot_df.iterrows(), x, y, sizes):
+    for idx, (_, row) in enumerate(plot_df.iterrows()):
         region = row["who_region"]
         color = REGION_COLORS.get(region, PALETTE["neutral_mid"])
-        ax.scatter(xi, yi, s=si, color=color, alpha=0.88, edgecolor="white", linewidth=0.75, zorder=3)
-        label = f"{region}\n{int(row['acceleration_risk_countries'])}/{int(row['matched_countries'])}"
-        ax.text(xi, yi, label, ha="center", va="center", fontsize=5.5, color="white" if region in ["AFRO", "WPRO"] else PALETTE["black"], zorder=4)
+        xi = 100 * float(row["acceleration_risk_share"])
+        si = sizes[idx]
+        ax.scatter(xi, idx, s=si, color=color, alpha=0.92, edgecolor="white", linewidth=0.75, zorder=3)
+        count_label = f"{int(row['acceleration_risk_countries'])}/{int(row['matched_countries'])}"
+        ax.text(min(xi + 4.2, 95), idx, count_label, ha="left", va="center", fontsize=5.7, color=PALETTE["black"], zorder=4)
 
-    ax.set_yscale("log")
-    ax.set_xlim(0.15, max(max(x) * 1.12, growth_q75 * 1.18))
-    ax.set_ylim(0.08, max(max(y) * 1.45, 3.0))
-    ax.set_xticks([0.25, 0.5, 0.75, 1.0, 1.25])
-    ax.set_xticklabels(["25", "50", "75", "100", "125"])
-    ax.set_yticks([0.1, 0.3, 1, 3])
-    ax.set_yticklabels(["0.1", "0.3", "1", "3"])
-    ax.set_xlabel("Regional selected-site case growth, 2024-2050 (%)")
-    ax.set_ylabel("MV units per 1000 selected-site cases, 2050", labelpad=1.5)
+    ax.set_xlim(0, 100)
+    ax.set_ylim(-0.55, len(plot_df) - 0.45)
+    ax.set_yticks(y)
+    ax.set_yticklabels(plot_df["who_region"].tolist())
+    ax.set_xticks([0, 25, 50, 75, 100])
+    ax.set_xticklabels(["0", "25", "50", "75", "100"])
+    ax.set_xlabel("Acceleration-risk countries among matched countries (%)")
+    ax.set_ylabel("")
+    ax.tick_params(axis="y", length=0)
     ax.text(
         0.98,
         0.03,
-        "Labels: acceleration-risk countries /\nmatched countries; axes use aggregate ratios",
+        "Labels: acceleration-risk countries /\nmatched countries; point area encodes matched countries",
         transform=ax.transAxes,
         ha="right",
         va="bottom",
@@ -528,7 +531,7 @@ def make_figure() -> dict[str, Path]:
     sm.set_array([])
     cax = ax_a.inset_axes([0.335, -0.105, 0.330, 0.034])
     cbar = fig.colorbar(sm, cax=cax, orientation="horizontal", ticks=[0.01, 0.05, 0.1, 0.5, 1, 5])
-    cbar.set_label("MV units per 1000 selected-site cases, 2050", fontsize=5.6, labelpad=1.0)
+    cbar.set_label("Latest-reported MV units per 1000 selected-site cases, 2050", fontsize=5.6, labelpad=1.0)
     cbar.ax.set_xticklabels(["0.01", "0.05", "0.1", "0.5", "1", "5"])
     cbar.ax.tick_params(labelsize=5.2, length=1.8, pad=1.0)
     cbar.outline.set_linewidth(0.45)
@@ -601,7 +604,7 @@ def write_design_note(
     lines = [
         "# Radiotherapy Resource Mismatch Figure Contract",
         "",
-        "Core conclusion: Countries with rapidly growing selected cancer-site incidence are concentrated in settings with sparse current megavoltage unit density.",
+        "Core conclusion: Countries with upper-quartile projected selected cancer-site incidence growth are concentrated in settings with sparse latest-reported megavoltage unit density.",
         "Figure archetype: asymmetric mixed-modality figure.",
         "Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG.",
         "Backend: Python/matplotlib only.",
@@ -609,15 +612,15 @@ def write_design_note(
         "",
         "## Panel Map",
         "",
-        "- a: Hero world map; fill encodes MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries crossing both high-growth and lower-quartile unit-density thresholds, hatch marks DIRAC-missing observations.",
-        "- b: Country pressure profile plot; y-axis is selected-site cases per MV-unit pressure rank, x-axis is MV density, point area encodes projected 2050 selected-site cases, right text gives relative growth and current MV units.",
-        "- c: WHO-region burden-resource quadrant; x-axis is aggregate relative selected-site case growth, y-axis is aggregate MV density, bubble area encodes projected 2050 selected-site cases, labels give acceleration-risk count over matched countries.",
+        "- a: Hero world map; fill encodes latest-reported MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries crossing both high-growth and lower-quartile unit-density thresholds, hatch marks DIRAC-missing observations.",
+        "- b: Country pressure profile plot; y-axis is selected-site cases per MV-unit pressure rank, x-axis is MV density, point area encodes projected 2050 selected-site cases, right text gives relative growth and latest-reported MV units.",
+        "- c: WHO-region acceleration-risk proportion plot; x-axis is acceleration-risk countries as a share of matched countries, labels give acceleration-risk count over matched countries, and point area encodes the number of matched countries.",
         "",
         "## Evidence Hierarchy",
         "",
-        "- Hero evidence: geographic co-localisation of projected selected-site incidence growth and low current MV-unit density.",
-        "- Validation evidence: ranked country profiles show countries with the highest selected-site cases per current MV unit.",
-        "- Regional synthesis: AFRO is visually separated by high relative growth, low MV density, and the largest count of acceleration-risk countries.",
+        "- Hero evidence: geographic co-localisation of projected selected-site incidence growth and sparse latest-reported MV-unit density.",
+        "- Validation evidence: ranked country profiles show countries with the highest selected-site cases per latest-reported MV unit.",
+        "- Regional synthesis: WHO-region proportions show where acceleration-risk countries are concentrated among matched DIRAC records.",
         "",
         "## Thresholds and n",
         "",
@@ -628,10 +631,10 @@ def write_design_note(
         "",
         "## Reviewer-Risk Notes",
         "",
-        "- DIRAC-absent countries are treated as missing resource observations, not zero-capacity countries.",
+        "- DIRAC-absent countries are treated as missing resource observations without assigned measured resource density.",
         "- The figure visualises selected cancer-site incidence, not modelled radiotherapy demand or utilisation.",
-        "- MV units are current DIRAC country-table counts and are not projected to 2050.",
-        "- Panel c uses complete-case regional aggregation for resource denominators.",
+        "- MV units are latest-reported DIRAC country-table counts and are not projected to 2050.",
+        "- Panel c reports regional proportions of country-level classifications, avoiding classification of regional aggregate ratios.",
         "",
         "## Exported Files",
         "",

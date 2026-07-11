@@ -1,6 +1,6 @@
 # Radiotherapy Resource Mismatch Figure Contract
 
-Core conclusion: Countries with rapidly growing selected cancer-site incidence are concentrated in settings with sparse current megavoltage unit density.
+Core conclusion: Countries with upper-quartile projected selected cancer-site incidence growth are concentrated in settings with sparse latest-reported megavoltage unit density.
 Figure archetype: asymmetric mixed-modality figure.
 Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG.
 Backend: Python/matplotlib only.
@@ -8,15 +8,15 @@ Final size: 7.65 x 6.08 inches before tight bounding-box export.
 
 ## Panel Map
 
-- a: Hero world map; fill encodes MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries crossing both high-growth and lower-quartile unit-density thresholds, hatch marks DIRAC-missing observations.
-- b: Country pressure profile plot; y-axis is selected-site cases per MV-unit pressure rank, x-axis is MV density, point area encodes projected 2050 selected-site cases, right text gives relative growth and current MV units.
-- c: WHO-region burden-resource quadrant; x-axis is aggregate relative selected-site case growth, y-axis is aggregate MV density, bubble area encodes projected 2050 selected-site cases, labels give acceleration-risk count over matched countries.
+- a: Hero world map; fill encodes latest-reported MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries crossing both high-growth and lower-quartile unit-density thresholds, hatch marks DIRAC-missing observations.
+- b: Country pressure profile plot; y-axis is selected-site cases per MV-unit pressure rank, x-axis is MV density, point area encodes projected 2050 selected-site cases, right text gives relative growth and latest-reported MV units.
+- c: WHO-region acceleration-risk proportion plot; x-axis is acceleration-risk countries as a share of matched countries, labels give acceleration-risk count over matched countries, and point area encodes the number of matched countries.
 
 ## Evidence Hierarchy
 
-- Hero evidence: geographic co-localisation of projected selected-site incidence growth and low current MV-unit density.
-- Validation evidence: ranked country profiles show countries with the highest selected-site cases per current MV unit.
-- Regional synthesis: AFRO is visually separated by high relative growth, low MV density, and the largest count of acceleration-risk countries.
+- Hero evidence: geographic co-localisation of projected selected-site incidence growth and sparse latest-reported MV-unit density.
+- Validation evidence: ranked country profiles show countries with the highest selected-site cases per latest-reported MV unit.
+- Regional synthesis: WHO-region proportions show where acceleration-risk countries are concentrated among matched DIRAC records.
 
 ## Thresholds and n
 
@@ -27,10 +27,10 @@ Final size: 7.65 x 6.08 inches before tight bounding-box export.
 
 ## Reviewer-Risk Notes
 
-- DIRAC-absent countries are treated as missing resource observations, not zero-capacity countries.
+- DIRAC-absent countries are treated as missing resource observations without assigned measured resource density.
 - The figure visualises selected cancer-site incidence, not modelled radiotherapy demand or utilisation.
-- MV units are current DIRAC country-table counts and are not projected to 2050.
-- Panel c uses complete-case regional aggregation for resource denominators.
+- MV units are latest-reported DIRAC country-table counts and are not projected to 2050.
+- Panel c reports regional proportions of country-level classifications, avoiding classification of regional aggregate ratios.
 
 ## Exported Files
 
