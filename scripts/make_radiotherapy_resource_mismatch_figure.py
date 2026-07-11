@@ -431,7 +431,15 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
         Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_new"], markeredgecolor="white", markersize=4.8, label="New (1)"),
         Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_exit"], markeredgecolor="white", markersize=4.8, label="No longer (3)"),
     ]
-    ax.legend(handles=handles, loc="lower right", borderpad=0.1, handletextpad=0.3, labelspacing=0.25)
+    ax.legend(
+        handles=handles,
+        loc="lower right",
+        bbox_to_anchor=(0.985, 0.135),
+        borderaxespad=0,
+        borderpad=0.1,
+        handletextpad=0.3,
+        labelspacing=0.25,
+    )
     ax.text(
         0.01,
         -0.27,
@@ -575,14 +583,27 @@ def make_figure() -> dict[str, Path]:
         "pdf": out_base.with_suffix(".pdf"),
         "png": out_base.with_suffix(".png"),
     }
-    fig.savefig(paths["svg"], bbox_inches="tight")
+    fig.savefig(
+        paths["svg"],
+        bbox_inches="tight",
+        metadata={"Creator": None, "Date": None},
+    )
     svg_text = paths["svg"].read_text(encoding="utf-8")
     paths["svg"].write_text(
         "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n",
         encoding="utf-8",
     )
-    fig.savefig(paths["pdf"], bbox_inches="tight")
-    fig.savefig(paths["png"], dpi=600, bbox_inches="tight")
+    fig.savefig(
+        paths["pdf"],
+        bbox_inches="tight",
+        metadata={"Creator": None, "Producer": None, "CreationDate": None},
+    )
+    fig.savefig(
+        paths["png"],
+        dpi=600,
+        bbox_inches="tight",
+        metadata={"Software": None},
+    )
     plt.close(fig)
 
     country_source_cols = [
