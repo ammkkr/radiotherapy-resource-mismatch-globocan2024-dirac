@@ -1,20 +1,39 @@
 {
   "version": {
     "common_matched_countries": 149,
-    "gco2022_growth_q75": 1.3684318977951782,
-    "gco2022_density_q25": 0.5017917963702246,
-    "gco2022_screen_positive_count": 25,
-    "gco2024_screen_positive_count_common": 23,
-    "retained_count": 22,
+    "gco2022_screen_positive_count": 24,
+    "gco2024_screen_positive_count_common": 24,
+    "retained_count": 23,
     "new_in_2024": [
-      "GTM"
+      "PNG"
     ],
     "no_longer_in_2024": [
-      "NGA",
-      "TGO",
       "ZWE"
     ],
-    "jaccard": 0.8461538461538461
+    "jaccard": 0.92,
+    "comparison_baseline": "2025 for both burden versions",
+    "gco2022_growth_q75": 1.1274426508071367,
+    "gco2022_density_q25": 0.5017917963702246,
+    "gco2024_growth_q75": 1.1053423626787058,
+    "gco2024_density_q25": 0.4998861019008327,
+    "legacy_native_baseline_comparison": {
+      "common_matched_countries": 149,
+      "gco2022_screen_positive_count": 25,
+      "gco2024_screen_positive_count_common": 23,
+      "retained_count": 22,
+      "new_in_2024": [
+        "GTM"
+      ],
+      "no_longer_in_2024": [
+        "NGA",
+        "TGO",
+        "ZWE"
+      ],
+      "jaccard": 0.8461538461538461,
+      "comparison_baseline": "native release years (2022 and 2024)",
+      "gco2022_growth_q75": 1.3684318977951782,
+      "gco2022_density_q25": 0.5017917963702246
+    }
   },
   "decoupled": {
     "growth_q75": 1.1921143269617445,
@@ -39,5 +58,64 @@
       "RWA",
       "SYR"
     ]
+  },
+  "recency": {
+    "cutoff_year": 2023,
+    "primary_matched_countries": 150,
+    "recent_record_countries": 125,
+    "older_record_countries": 25,
+    "recent_growth_q75": 1.1457264957264957,
+    "recent_density_q25": 0.6431997274223857,
+    "recent_screen_positive_count": 19,
+    "primary_recent_record_count": 16,
+    "primary_older_record_count": 7,
+    "primary_older_record_iso3": [
+      "COD",
+      "ETH",
+      "MDG",
+      "NER",
+      "SDN",
+      "YEM",
+      "ZMB"
+    ],
+    "eligible_primary_retained_count": 16,
+    "eligible_primary_not_retained_iso3": [],
+    "new_recent_screen_positive_iso3": [
+      "NAM",
+      "NIC",
+      "TGO"
+    ],
+    "recent_screen_positive_iso3": [
+      "AGO",
+      "BFA",
+      "CIV",
+      "CMR",
+      "GHA",
+      "GTM",
+      "KEN",
+      "MLI",
+      "MOZ",
+      "MWI",
+      "NAM",
+      "NIC",
+      "PNG",
+      "RWA",
+      "SEN",
+      "SYR",
+      "TGO",
+      "TZA",
+      "UGA"
+    ]
+  },
+  "all_cancer": {
+    "screen_positive_count": 25,
+    "primary_retained_count": 23,
+    "primary_not_retained_iso3": [],
+    "additional_iso3": [
+      "TGO",
+      "TJK"
+    ],
+    "growth_threshold_percent": 112.0,
+    "density_threshold": 0.139
   }
 }

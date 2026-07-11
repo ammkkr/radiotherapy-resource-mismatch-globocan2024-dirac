@@ -1,0 +1,7 @@
+Analysis,"Countries analyzed, No.",Growth / density threshold,"Countries meeting both, No.",Stability result,Differences
+Primary selected-site screen,150,119.2% / 0.506,23,Reference,None
+"Burden versions, common 2025 baseline",149,v2022 112.7% / 0.502; v2024 110.5% / 0.500,24 / 24,23/24 version-2022 priorities retained,New: PNG; no longer: ZWE
+All-cancer burden,150,112.0% / 0.139,25,23/23 primary retained,"Added: TGO, TJK"
+2024-case density denominator,150,119.2% / 0.860,21,21/23 primary retained,"Not retained: GTM, SYR"
+Q80-growth / Q20-density screen,150,133.9% / 0.337,16,16/23 primary retained,"Not retained: GHA, GTM, KEN, MDG, PNG, RWA, SYR"
+DIRAC record year 2023 or later,125,114.6% / 0.643,19,16/16 eligible primary retained,"Older primary records: COD, ETH, MDG, NER, SDN, YEM, ZMB; added: NAM, NIC, TGO"

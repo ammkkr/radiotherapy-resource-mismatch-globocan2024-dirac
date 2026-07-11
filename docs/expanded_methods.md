@@ -1,140 +1,57 @@
-# Expanded Reproducibility Methods v6
+# Expanded Reproducibility Methods
 
-This document provides reproducibility details for the Radiology Research Letter. It is intended for the public code repository and is not a formal online supplement; Radiology Research Letters do not permit online supplementary material.
+This document supplies reproducibility detail for the associated Research Letter and the shared public repository. It is not a formal Radiology supplement because that article type does not permit online supplementary material.
 
-## Study Design
+## Study Design and Data Sources
 
-This was a retrospective ecological country-level analysis of public aggregate cancer projections and radiotherapy-resource records. No individual-level data were used. Institutional review board approval, informed consent, and Health Insurance Portability and Accountability Act compliance were not applicable.
+We conducted a cross-sectional ecological analysis of public country-level cancer projections and latest-reported radiotherapy resource records. Cancer projections were obtained from the International Agency for Research on Cancer Global Cancer Observatory Cancer Tomorrow application programming interface for data versions 2022 and 2024. We extracted country, cancer-site, sex, measure, year, predicted count, and population fields. The analysis used both sexes combined and incident cases. Resource data were obtained from country tables in the International Atomic Energy Agency Directory of Radiotherapy Centres (DIRAC). Source data were accessed in July 2026.
 
-The analysis was designed as an updateable prioritization screen. It did not estimate patient-level radiotherapy indication, optimal utilization, treatment receipt, machine throughput, or unmet need.
+Countries were linked with three-letter International Organization for Standardization codes. Global Cancer Observatory country records without a DIRAC match were retained as resource-unknown observations. They were not assigned zero equipment. A DIRAC-reported value of zero, where present, was retained as an observed value. Duplicate country records and one-to-many joins were not permitted. The primary data version contained 186 Global Cancer Observatory country records.
 
-## Data Sources and Versioning
+The primary complete-case analysis included 150 countries with matched nonmissing megavoltage-unit records; 36 country records remained resource-unknown. The common-baseline burden-version analysis included 149 countries present in both burden versions and in the fixed resource snapshot. These analytic universes were defined separately because a country could contribute to missing-resource bounds without contributing to a complete-case threshold calculation.
 
-Cancer projections were obtained from the International Agency for Research on Cancer Global Cancer Observatory Cancer Tomorrow application programming interface. The primary analysis used data version 2024. A burden-version analysis repeated the screen using data version 2022.
+Because the study used public, aggregate country observations and no individual health information, institutional review board approval and informed consent were not applicable.
 
-The version comparison held the same latest-reported International Atomic Energy Agency Directory of Radiotherapy Centres resource snapshot fixed. It therefore evaluates classification sensitivity to a burden-data update and is not a longitudinal comparison of radiotherapy resources.
+## Cancer Burden Measures
 
-The primary resource count was the latest-reported number of megavoltage photon/electron therapy units in the Directory of Radiotherapy Centres country record. Record years differed among countries. Counts describe registered equipment and do not establish operability, uptime, staffing, treatment-planning capability, or patient access.
+The primary burden proxy was the unweighted sum of incident cases for 14 cancer sites commonly involving radiotherapy in at least some treatment pathways: lip and oral cavity, oropharynx, nasopharynx, hypopharynx, esophagus, rectum, larynx, trachea/bronchus/lung, breast, cervix uteri, corpus uteri, prostate, bladder, and brain/central nervous system. The corresponding Global Cancer Observatory site codes were 1, 3, 4, 5, 6, 9, 14, 15, 20, 23, 24, 27, 30, and 31. The proxy was specified to provide a reproducible burden measure and was not interpreted as radiotherapy indication, utilization, or unmet treatment need.
 
-Natural Earth geometry was used only to draw country boundaries in Figure 1a.
+For data version 2024, selected-site cases were aggregated for 2024, 2040, and 2050. Relative projected growth was calculated as the difference between 2050 and 2024 cases divided by 2024 cases. Absolute increase was calculated as 2050 cases minus 2024 cases. The all-cancer sensitivity analysis used the same calculations after summing all cancer sites.
 
-## Country Matching and Analytic Universes
+For country *i*, the primary growth measure was `(selected-site cases in 2050_i - selected-site cases in 2024_i) / selected-site cases in 2024_i`. Complete-case burden shares used absolute case increases, not relative growth, in the numerator and denominator.
 
-Countries were matched using three-letter country codes.
+## Radiotherapy Resource Measures
 
-- The data-version-2024 country universe contained 186 country records.
-- Resource records matched 150 countries; 36 had no resource match.
-- The burden-version comparison contained 149 countries with matched resources and burden projections in both versions.
-- Countries without a resource match remained resource-unknown. They were not assigned zero units or an imputed density.
+The primary resource numerator was the latest-reported national count of megavoltage photon or electron therapy units in DIRAC. The primary density denominator was projected selected-site incident cases in 2050. Density was expressed as megavoltage units per 1000 projected cases. The record year supplied by DIRAC was retained for each matched country. Registered unit counts were not adjusted for equipment operability, downtime, staffing, throughput, geographic distribution, or referral access.
 
-## Selected-Site Incidence Proxy
+For country *i*, unit density was `latest-reported megavoltage units_i x 1000 / selected-site cases in 2050_i`. Country rows with zero registered units were retained with zero density; cases per unit were left undefined rather than divided by zero.
 
-The prespecified proxy summed incident cases from 14 cancer sites commonly involving radiotherapy in at least some treatment pathways: lip/oral cavity, oropharynx, nasopharynx, hypopharynx, esophagus, rectum, larynx, trachea/bronchus/lung, breast, cervix uteri, corpus uteri, prostate, bladder, and brain/central nervous system.
+Within the primary complete-case set, high growth was defined as relative growth at or above the 75th percentile, and lower resource density as density at or below the 25th percentile. Quantiles used linear interpolation. The resulting thresholds were 119.2% growth and 0.506 megavoltage units per 1000 projected cases. A country met both thresholds only when both criteria were satisfied. These thresholds define a relative screening group and do not represent an equipment-adequacy standard.
 
-Sites were summed with equal weight. The resulting quantity is selected-site incidence, not modeled radiotherapy demand. It does not incorporate stage, indication, retreatment, fractionation, or site-specific optimal-utilization weights.
+## Common-Baseline Burden-Version Analysis
 
-## Primary Metrics
+To separate burden-data revision from different projection baselines, the main version comparison used 2025 as the baseline and 2050 as the horizon in both Global Cancer Observatory releases. It was restricted to the same 149 countries with burden estimates in both versions and matched resource records. The same latest-reported DIRAC snapshot was applied to both releases. Version-specific 75th-percentile growth and 25th-percentile density thresholds were calculated within this common set. Countries were classified as retained, new in data version 2024, no longer classified, or not classified in either version.
 
-For country \(i\), relative selected-site incidence growth was:
+The version-2022 thresholds were 112.7% growth and 0.502 units per 1000 cases; the version-2024 thresholds were 110.5% and 0.500, respectively. Classification overlap was summarized by retained, new, and no-longer-classified countries and the Jaccard index. The comparison was descriptive and did not treat model versions as repeated measurements.
 
-```text
-growth_i = (cases_2050,i - cases_2024,i) / cases_2024,i
-```
+For transparency, the repository also preserves the earlier operational comparison in which each release used its native baseline year, 2022 or 2024. That comparison was treated as a secondary analysis because it combines burden-version and baseline-year differences.
 
-Latest-reported megavoltage-unit density was:
+## Sensitivity Analyses
 
-```text
-density_2050,i = latest-reported MV units_i / cases_2050,i * 1000
-```
+The all-cancer analysis replaced selected-site incidence with all-cancer incidence in both the growth and density measures. The baseline-density analysis retained the primary 2024-to-2050 growth measure but divided latest-reported units by selected-site cases in 2024 instead of 2050. A stricter analysis used the 80th percentile of growth and 20th percentile of 2050 unit density. Additional repository analyses used a 2040 horizon, radiotherapy-centre density, selected-site mortality growth, and exclusion of countries with fewer than 1000 selected-site cases at baseline.
 
-The descriptive case pressure shown in Table 1 was:
+Resource-record recency was examined by restricting the complete-case set to DIRAC records dated 2023 or later. Growth and density thresholds were recalculated in the restricted set. Primary countries with earlier records were reported as ineligible for this sensitivity analysis rather than classified as negative. This restriction evaluates whether the observed core persists among countries with more recent inventory reports; it does not update older inventories or establish that recorded units remain functional.
 
-```text
-cases_per_unit_i = cases_2050,i / latest-reported MV units_i
-```
+## Missing-Resource Bounds
 
-## Primary Screen
+We used deterministic identification bounds to show how missing resource records could alter the proportion of countries meeting both thresholds. For each World Health Organization region and globally, the lower bound divided the observed number meeting both thresholds by all Global Cancer Observatory country records. The upper bound added resource-unknown countries whose projected growth exceeded the primary growth threshold to the numerator. The upper bound therefore represents an extreme scenario in which every unmatched high-growth country also meets the resource-density criterion. These intervals are not confidence intervals and do not assume that missingness is random.
 
-Percentile thresholds were calculated among the 150 countries with matched resource records. A country met both primary thresholds when:
+For a stratum containing `N` country records, `O` observed countries meeting both thresholds, and `H` high-growth countries without a resource match, the lower bound was `O/N` and the upper bound was `(O+H)/N`. Resource-unknown countries below the growth threshold could not meet both criteria and therefore did not widen the interval.
 
-```text
-growth_i >= complete-case 75th percentile of growth
-and
-density_2050,i <= complete-case 25th percentile of density_2050
-```
+## Statistical Analysis and Reproducibility
 
-The thresholds were 119.2% growth and 0.506 megavoltage units per 1000 projected 2050 selected-site cases. Twenty-three countries met both thresholds. The quartiles are relative screening rules within the observed country set, not clinical or engineering adequacy standards.
+Analyses described the complete available country records and did not use sampling-based hypothesis tests. We reported counts, proportions, quantile thresholds, classification overlap, and Spearman rank correlations for construct diagnostics. Sensitivity analyses were interpreted by retention of primary countries and by named classification changes, not by statistical significance. Figure 1 used country-level analytic data for the map and burden-version panel and region-level identification-bound data for the interval panel. Table 1 was generated directly from the corresponding CSV source file without manual transcription.
 
-## Burden-Version Stability Analysis
+All processing, analysis, and figure generation were performed in Python 3.12 with NumPy 2.3.5, pandas 2.3.3, Matplotlib 3.11.0, and SciPy 1.18.0. From the public repository root, the derived-data workflow runs `python scripts/analyze_additional_analyses.py` followed by `python scripts/make_radiotherapy_resource_mismatch_figure.py`. Full rebuilding additionally requires source files obtained from the original providers and then runs `python scripts/build_radiotherapy_resource_mismatch.py` before the additional-analysis and figure scripts.
 
-The screen was independently recalibrated within each burden version because the question was whether applying the same prespecified rule to an updated modeled burden would alter country classification. The same latest-reported resource count was joined to both versions.
-
-Among 149 common matched countries:
-
-- data version 2022 identified 25 countries;
-- data version 2024 identified 23 countries;
-- 22 were retained in both versions;
-- Guatemala was newly classified with version 2024;
-- Nigeria, Togo, and Zimbabwe were no longer classified with version 2024;
-- the Jaccard similarity was 0.846.
-
-Figure 1b plots each country's within-version growth percentile to show both rank stability and threshold crossings without treating the two burden versions as calendar-year observations.
-
-## Denominator and Threshold Sensitivity
-
-The primary growth and density metrics share projected 2050 case counts. Two analyses assessed whether this mathematical coupling drove classification.
-
-First, density was recalculated using baseline selected-site incidence:
-
-```text
-density_2024,i = latest-reported MV units_i / cases_2024,i * 1000
-```
-
-The 25th-percentile threshold was 0.860 units per 1000 baseline cases. Twenty-one of the 23 primary countries remained classified; Guatemala and the Syrian Arab Republic did not.
-
-Second, a stricter definition combined the 80th percentile of growth with the 20th percentile of primary density. Sixteen of the 23 primary countries remained classified.
-
-Additional prespecified robustness analyses used all-cancer incidence, a 2040 projection horizon, radiotherapy-centre density instead of unit density, mortality growth instead of incidence growth, exclusion of countries with fewer than 1000 baseline selected-site cases, and alternative percentile thresholds. Table 1 reports, for each primary country, retention across seven alternatives: baseline-density denominator, strict 80th/20th percentiles, all-cancer burden, 2040 horizon, centre density, mortality growth, and exclusion of small baseline counts.
-
-## Missing-Resource Identification Bounds
-
-Missing resource status was summarized without imputing equipment counts. For a stratum with \(N\) Global Cancer Observatory country records, \(O\) observed countries meeting both thresholds, and \(H\) high-growth countries without a resource match:
-
-```text
-lower bound = O / N
-upper bound = (O + H) / N
-```
-
-The lower bound treats every resource-unknown country as not meeting the resource criterion. The upper bound treats every high-growth resource-unknown country as meeting it. Resource-unknown countries below the growth threshold cannot meet both criteria and therefore do not widen the interval.
-
-Globally, the observed count was 23 of 186 and 17 high-growth countries were resource-unknown, yielding 12.4%-21.5%. In the African Region, the corresponding values were 18 observed and 10 high-growth resource-unknown countries among 47 records, yielding 38.3%-59.6%. These are deterministic partial-identification bounds, not confidence intervals.
-
-## Construct Diagnostics
-
-Spearman rank correlations described relationships among country-level measures. Selected-site growth correlated strongly with all-cancer growth (rho = 0.997) and population growth (rho = 0.903). Its correlation with unit density was weaker when density used baseline rather than projected cases (rho = -0.378 vs -0.699), supporting the denominator sensitivity analysis. Growth ranks across burden versions had rho = 0.922.
-
-No P values or confidence intervals were calculated. The analyses describe the complete available country records rather than a probability sample, and the inferential target was classification stability rather than a null hypothesis.
-
-## Figure and Table Construction
-
-Figure 1a maps latest-reported units per 1000 projected 2050 selected-site cases. Red outlines identify countries meeting both primary thresholds; hatching identifies resource-unknown countries.
-
-Figure 1b compares within-version growth percentiles among the 149 common matched countries while holding the resource snapshot fixed. Colors identify retained, newly classified, and no-longer-classified countries. Point area represents version-2024 projected 2050 selected-site cases.
-
-Figure 1c presents World Health Organization region lower and upper identification bounds among all country records. The plotted intervals do not represent sampling uncertainty.
-
-Table 1 gives country characteristics, burden-version classification, baseline-density sensitivity, and retention across seven alternative analyses for the 23 countries meeting both primary thresholds.
-
-## Reproduction
-
-From the repository root, run:
-
-```bash
-python scripts/data_fetch/fetch_gco_2022_cancer_tomorrow_predictions.py --chunk-size 50
-python scripts/analysis/build_radiotherapy_resource_mismatch.py
-python scripts/analysis/analyze_radiology_v6_additional_analyses.py
-python scripts/figures/make_radiotherapy_resource_mismatch_figure.py
-python scripts/tables/build_radiology_revision_tables.py
-```
-
-The repository distributes derived analytic data, display source data, code, a sanitized build log, a manifest, and SHA-256 checksums. Raw Global Cancer Observatory and Directory of Radiotherapy Centres source exports are not redistributed.
+The public repository contains source-data documentation, derived analytic files, analysis scripts, figure source data, checksums, and a file manifest. Raw source exports are not redistributed. The repository is available at https://github.com/ammkkr/radiotherapy-resource-mismatch-globocan2024-dirac.

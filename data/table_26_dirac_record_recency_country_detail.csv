@@ -1,0 +1,151 @@
+country_iso3,country_display,who_region,income_label,dirac_last_update_year,selected_site_relative_case_growth_2050,mv_units_per_1000_selected_site_cases_2050,current_screen_positive,recent_dirac_record,recent_record_screen_positive,recency_disposition
+ALB,Albania,EURO,Upper middle income,2025.0,0.1165028665028665,0.7335411699981661,False,True,False,Not classified
+DZA,Algeria,AFRO,Lower middle income,2026.0,0.9236924686192468,0.8700144096136593,False,True,False,Not classified
+AGO,Angola,AFRO,Lower middle income,2023.0,1.436060365369341,0.0815128790348875,True,True,True,Primary country retained
+AZE,Azerbaijan,EURO,Upper middle income,2023.0,0.6438378291067679,0.9826078412105728,False,True,False,Not classified
+ARG,Argentina,PAHO,Upper middle income,2026.0,0.5394294539838285,1.2885203655069983,False,True,False,Not classified
+AUS,Australia,WPRO,High income,2025.0,0.4865187464357237,1.9984832939287147,False,True,False,Not classified
+AUT,Austria,EURO,High income,2026.0,0.2085665928915505,2.0826600596071674,False,True,False,Not classified
+BHS,Bahamas,PAHO,High income,2025.0,0.6671490593342981,0.8680555555555556,False,True,False,Not classified
+BHR,Bahrain,EMRO,High income,2018.0,0.9429951690821256,0.9945300845350572,False,False,False,Not classified
+BGD,Bangladesh,SEARO,Lower middle income,2026.0,0.9863386061520116,0.1633337747759678,False,True,False,Not classified
+ARM,Armenia,EURO,Upper middle income,2026.0,0.4041805726330581,1.0007505629221916,False,True,False,Not classified
+BRB,Barbados,PAHO,High income,2025.0,0.1688524590163934,4.207573632538569,False,True,False,Not classified
+BEL,Belgium,EURO,High income,2023.0,0.2273533760473139,1.987712323816408,False,True,False,Not classified
+BOL,Bolivia (Plurinational State of),PAHO,Lower middle income,2025.0,0.9826252007592348,1.1782900066278812,False,True,False,Not classified
+BIH,Bosnia Herzegovina,EURO,Upper middle income,2026.0,0.0252239834596829,2.688894864210809,False,True,False,Not classified
+BWA,Botswana,AFRO,Upper middle income,2026.0,1.353437876960193,0.7688364941055869,False,True,False,Not classified
+BRA,Brazil,PAHO,Upper middle income,2026.0,0.7453207724631745,0.6431997274223857,False,True,False,Not classified
+BRN,Brunei Darussalam,WPRO,High income,2025.0,1.0025062656641603,2.503128911138924,False,True,False,Not classified
+BGR,Bulgaria,EURO,Upper middle income,2025.0,-0.0524893399795808,3.042403498764024,False,True,False,Not classified
+MMR,Myanmar,SEARO,Lower middle income,2025.0,0.5765215628642376,0.3696620003535897,False,True,False,Not classified
+BLR,Belarus,EURO,Upper middle income,2024.0,0.09375,1.375515818431912,False,True,False,Not classified
+KHM,Cambodia,WPRO,Lower middle income,2024.0,0.8243540119259337,0.1720282126268708,False,True,False,Not classified
+CMR,Cameroon,AFRO,Lower middle income,2023.0,1.607695810564663,0.0873133676765912,True,True,True,Primary country retained
+CAN,Canada,PAHO,High income,2026.0,0.4029155066161979,1.6500546301870804,False,True,False,Not classified
+LKA,Sri Lanka,SEARO,Lower middle income,2026.0,0.4716507552328448,0.8832307973442164,False,True,False,Not classified
+CHL,Chile,PAHO,High income,2025.0,1.066927230236119,0.8772442832914206,False,True,False,Not classified
+CHN,China,WPRO,Upper middle income,2026.0,0.4727670356069103,0.8073093991244603,False,True,False,Not classified
+COL,Colombia,PAHO,Upper middle income,2026.0,1.345573493721642,0.7347758933525275,False,True,False,Not classified
+COD,Democratic Republic of the Congo,AFRO,Low income,2021.0,1.3907196920435925,0.0108794986727011,True,False,False,Primary country; record before 2023
+CRI,Costa Rica,PAHO,Upper middle income,2026.0,0.7450102592799851,1.282736504543025,False,True,False,Not classified
+HRV,Croatia,EURO,High income,2026.0,-0.0034008464328899,2.729961325547888,False,True,False,Not classified
+CUB,Cuba,PAHO,Upper middle income,2026.0,0.3573937715327974,0.4976733769626993,False,True,False,Not classified
+CYP,Cyprus,EURO,High income,2025.0,0.6906565656565656,1.8670649738610905,False,True,False,Not classified
+CZE,Czechia,EURO,High income,2021.0,0.1499546866908337,1.8857834445101185,False,False,False,Not classified
+DNK,Denmark,EURO,High income,2020.0,0.1794555021734157,2.1336850680839508,False,False,False,Not classified
+DOM,Dominican Republic,PAHO,Upper middle income,2025.0,1.0968995385736258,0.8107169053777554,False,True,False,Not classified
+ECU,Ecuador,PAHO,Upper middle income,2025.0,1.1657591785936527,1.364795460259311,False,True,False,Not classified
+SLV,El Salvador,PAHO,Lower middle income,2026.0,0.7741360089186177,1.7594570818147544,False,True,False,Not classified
+ETH,Ethiopia,AFRO,Low income,2022.0,1.409078816900046,0.0301165510525734,True,False,False,Primary country; record before 2023
+EST,Estonia,EURO,High income,2026.0,0.1598062953995157,2.0876826722338206,False,True,False,Not classified
+FIN,Finland,EURO,High income,2020.0,0.1222826086956521,2.522195318805488,False,False,False,Not classified
+FRA,France (metropolitan),EURO,High income,2023.0,0.1386594314828992,2.241244401804005,False,True,False,Not classified
+GAB,Gabon,AFRO,Upper middle income,2018.0,1.1987577639751552,1.1299435028248588,False,False,False,Not classified
+GEO,Georgia,EURO,Upper middle income,2026.0,0.2364365367748402,2.026753141467369,False,True,False,Not classified
+DEU,Germany,EURO,High income,2026.0,0.0781088609388575,2.5006571574826024,False,True,False,Not classified
+GHA,Ghana,AFRO,Lower middle income,2026.0,1.2497048406139315,0.1749322137671652,True,True,True,Primary country retained
+GRC,Greece,EURO,High income,2023.0,0.0872071664735637,1.5075507498765368,False,True,False,Not classified
+GLP,"France, Guadeloupe",PAHO,,2023.0,-0.1666666666666666,3.076923076923077,False,True,False,Not classified
+GTM,Guatemala,PAHO,Upper middle income,2026.0,1.4630908698467515,0.3505235946194628,True,True,True,Primary country retained
+GUY,Guyana,PAHO,Upper middle income,2024.0,0.7627520759193357,0.6729475100942126,False,True,False,Not classified
+HND,Honduras,PAHO,Lower middle income,2024.0,1.4228316326530612,0.8774238834781083,False,True,False,Not classified
+HUN,Hungary,EURO,High income,2026.0,0.069582855631008,1.4841688654353562,False,True,False,Not classified
+ISL,Iceland,EURO,High income,2018.0,0.5695238095238095,1.2135922330097086,False,False,False,Not classified
+IND,India,SEARO,Lower middle income,2026.0,0.8308883898124698,0.4691844850003321,False,True,False,Not classified
+IDN,Indonesia,SEARO,Lower middle income,2026.0,0.6677940027833176,0.2068247409936146,False,True,False,Not classified
+IRN,"Iran, Islamic Republic of",EMRO,Lower middle income,2023.0,1.1122874051942082,0.8296554209821216,False,True,False,Not classified
+IRQ,Iraq,EMRO,Upper middle income,2025.0,1.5282108607401306,1.3264451270594806,False,True,False,Not classified
+IRL,Ireland,EURO,High income,2026.0,0.4979759910664433,1.8636723663979875,False,True,False,Not classified
+ISR,Israel,EURO,High income,2026.0,0.6188598543072913,1.6100400445857244,False,True,False,Not classified
+ITA,Italy,EURO,High income,2026.0,0.1121574233534973,2.4456838209604164,False,True,False,Not classified
+CIV,Cote d'Ivoire,AFRO,Lower middle income,2026.0,1.4397199453551912,0.1399874011338979,True,True,True,Primary country retained
+JAM,Jamaica,PAHO,Upper middle income,2025.0,0.620491614978176,0.7088176920895946,False,True,False,Not classified
+JPN,Japan,WPRO,High income,2026.0,0.0006417222112891,2.10777439545781,False,True,False,Not classified
+KAZ,Kazakhstan,EURO,Upper middle income,2026.0,0.6951194184839045,2.0828228375398186,False,True,False,Not classified
+JOR,Jordan,EMRO,Upper middle income,2025.0,2.067455375674554,1.5562622640232762,False,True,False,Not classified
+KEN,Kenya,AFRO,Lower middle income,2026.0,1.4265730994152046,0.3470347805968998,True,True,True,Primary country retained
+PRK,Democratic People's Republic of Korea,SEARO,Low income,2016.0,0.3408911312382226,0.0453329706695679,False,False,False,Not classified
+KOR,"Korea, Republic of",WPRO,High income,2023.0,0.4474527313595264,1.335066577662228,False,True,False,Not classified
+KWT,Kuwait,EMRO,High income,2021.0,0.7997076023391813,1.353912808015164,False,False,False,Not classified
+KGZ,Kyrgyzstan,EURO,Lower middle income,2025.0,0.9216589861751152,0.1262148176195885,False,True,False,Not classified
+LAO,Lao People's Democratic Republic,WPRO,Lower middle income,2022.0,0.9560051380860628,0.1641766540797898,False,False,False,Not classified
+LBN,Lebanon,EMRO,Upper middle income,2026.0,0.6312130331015876,1.0178117048346056,False,True,False,Not classified
+LVA,Latvia,EURO,High income,2023.0,0.0098421856439843,2.520584775667955,False,True,False,Not classified
+LBY,Libya,EMRO,Upper middle income,2023.0,1.380880503144654,1.162299239222316,False,True,False,Not classified
+LTU,Lithuania,EURO,High income,2024.0,0.0525557157112761,1.685452438638997,False,True,False,Not classified
+LUX,Luxembourg,EURO,High income,2017.0,0.7152145643693107,1.516300227445034,False,False,False,Not classified
+MDG,Madagascar,AFRO,Low income,2022.0,1.3109965635738832,0.1173938563881823,True,False,False,Primary country; record before 2023
+MWI,Malawi,AFRO,Low income,2026.0,1.667832711442786,0.0582767563157434,True,True,True,Primary country retained
+MYS,Malaysia,WPRO,Upper middle income,2026.0,1.043660458452722,1.2443260484761387,False,True,False,Not classified
+MLI,Mali,AFRO,Low income,2026.0,1.5440746414148447,0.1094750670534785,True,True,True,Primary country retained
+MLT,Malta,EURO,High income,2024.0,0.455732946298984,1.4955134596211366,False,True,False,Not classified
+MTQ,"France, Martinique",PAHO,,2023.0,-0.2089201877934272,2.967359050445104,False,True,False,Not classified
+MRT,Mauritania,AFRO,Lower middle income,2019.0,1.3784323514727908,0.8396305625524769,False,False,False,Not classified
+MUS,Mauritius,AFRO,Upper middle income,2024.0,0.3703007518796992,2.286236854138089,False,True,False,Not classified
+MEX,Mexico,PAHO,Upper middle income,2026.0,0.7534232311136565,1.282736504543025,False,True,False,Not classified
+MNG,Mongolia,WPRO,Lower middle income,2025.0,1.3803571428571428,1.1252813203300824,False,True,False,Not classified
+MDA,Republic of Moldova,EURO,Upper middle income,2025.0,-0.1069171648163962,0.956205775482884,False,True,False,Not classified
+MNE,Montenegro,EURO,Upper middle income,2026.0,0.0595947556615017,2.249718785151856,False,True,False,Not classified
+MAR,Morocco,EMRO,Lower middle income,2026.0,0.6888353355873679,1.9381083210870444,False,True,False,Not classified
+MOZ,Mozambique,AFRO,Low income,2025.0,1.461683686604308,0.0348602105556717,True,True,True,Primary country retained
+OMN,Oman,EMRO,High income,2025.0,1.2076719576719577,2.097064110245656,False,True,False,Not classified
+NAM,Namibia,AFRO,Upper middle income,2024.0,1.3942803563056727,0.5874290189935383,False,True,True,New in recent-record analysis
+NPL,Nepal,SEARO,Lower middle income,2026.0,0.7590785193000967,0.6498050584824553,False,True,False,Not classified
+NLD,The Netherlands,EURO,High income,2025.0,0.2419105280861083,2.0854774930935487,False,True,False,Not classified
+CUW,CuraÃ§ao,,High income,2024.0,0.1761517615176151,6.912442396313364,False,True,False,Not classified
+NZL,New Zealand,WPRO,High income,2024.0,0.3755871937558719,1.838814752548072,False,True,False,Not classified
+NIC,Nicaragua,PAHO,Lower middle income,2026.0,1.3921618204804045,0.6341824331466018,False,True,True,New in recent-record analysis
+NER,Niger,AFRO,Low income,2021.0,1.6700404858299596,0.0505433409148344,True,False,False,Primary country; record before 2023
+NGA,Nigeria,AFRO,Lower middle income,2026.0,1.0890271924491752,0.0838520652270417,False,True,False,Not classified
+NOR,Norway,EURO,High income,2021.0,0.3897280966767371,1.708074534161491,False,False,False,Not classified
+PAK,Pakistan,EMRO,Lower middle income,2026.0,1.0410638931877385,0.3955957011933804,False,True,False,Not classified
+PAN,Panama,PAHO,Upper middle income,2026.0,1.42604466062348,1.0935933655335823,False,True,False,Not classified
+PNG,Papua New Guinea,WPRO,Lower middle income,2024.0,1.3067543499109466,0.1187860070083744,True,True,True,Primary country retained
+PRY,Paraguay,PAHO,Upper middle income,2026.0,1.1457264957264957,0.73026621522937,False,True,False,Not classified
+PER,Peru,PAHO,Upper middle income,2026.0,0.9140020629190304,1.1451667228022904,False,True,False,Not classified
+PHL,Philippines,WPRO,Lower middle income,2026.0,1.060685086907199,0.4998861019008327,False,True,False,Not classified
+POL,Poland,EURO,High income,2026.0,0.2017316327078227,1.287623924499092,False,True,False,Not classified
+PRT,Portugal,EURO,High income,2025.0,0.0379955784819454,1.6186743908672687,False,True,False,Not classified
+PRI,Puerto Rico,PAHO,High income,2021.0,-0.0156626506024096,2.4479804161566707,False,False,False,Not classified
+QAT,Qatar,EMRO,High income,2023.0,0.5443577004968062,1.838235294117647,False,True,False,Not classified
+REU,"France, La RÃ©union",AFRO,,2018.0,0.3419037199124726,2.038320423970648,False,False,False,Not classified
+ROU,Romania,EURO,Upper middle income,2026.0,0.0123239102819331,2.210027531698912,False,True,False,Not classified
+RUS,Russian Federation,EURO,Upper middle income,2026.0,0.1132478008955291,1.6542934448622246,False,True,False,Not classified
+RWA,Rwanda,AFRO,Low income,2023.0,1.3385874507426494,0.1296176279974076,True,True,True,Primary country retained
+SAU,Saudi Arabia,EMRO,High income,2026.0,1.290191028117622,2.2961574507966263,False,True,False,Not classified
+SEN,Senegal,AFRO,Lower middle income,2024.0,1.4490108665366397,0.2275442289094942,True,True,True,Primary country retained
+SRB,Serbia,EURO,Upper middle income,2026.0,-0.060718711276332,2.0338610378188213,False,True,False,Not classified
+SGP,Singapore,WPRO,High income,2024.0,0.8440797186400938,1.618216494249552,False,True,False,Not classified
+SVK,Slovakia,EURO,High income,2026.0,0.2913145234689897,1.2082766953632382,False,True,False,Not classified
+VNM,Viet Nam,WPRO,Lower middle income,2026.0,0.5727312457920412,0.5257268173249517,False,True,False,Not classified
+SVN,Slovenia,EURO,High income,2026.0,0.17079311791859,1.075268817204301,False,True,False,Not classified
+ZAF,South Africa,AFRO,Upper middle income,2022.0,0.7870407239819005,1.0330787773208825,False,False,False,Not classified
+ZWE,Zimbabwe,AFRO,Lower middle income,2022.0,1.0527937826611282,0.0326370757180156,False,False,False,Not classified
+ESP,Spain,EURO,High income,2024.0,0.2793721748941366,1.4623636708677064,False,True,False,Not classified
+SDN,Sudan,EMRO,Low income,2022.0,1.3417002012072434,0.1288853564754151,True,False,False,Primary country; record before 2023
+SUR,Suriname,PAHO,Upper middle income,2026.0,1.1983240223463687,1.2706480304955527,False,True,False,Not classified
+SWE,Sweden,EURO,High income,2026.0,0.25184670749416,2.042566068186403,False,True,False,Not classified
+CHE,Switzerland,EURO,High income,2024.0,0.3525763724064007,2.405751160421148,False,True,False,Not classified
+SYR,Syrian Arab Republic,EMRO,Low income,2023.0,1.514020662028252,0.3634127250363412,True,True,True,Primary country retained
+TJK,Tajikistan,EURO,Lower middle income,2021.0,1.1476874003189792,0.2970444081390168,False,False,False,Not classified
+THA,Thailand,SEARO,Upper middle income,2026.0,0.3198912386706948,1.4557640014282969,False,True,False,Not classified
+TGO,Togo,AFRO,Low income,2025.0,1.1734852408078715,0.1191327138432213,False,True,True,New in recent-record analysis
+TTO,Trinidad and Tobago,PAHO,High income,2026.0,0.5491735537190082,1.8671645772205925,False,True,False,Not classified
+ARE,United Arab Emirates,EMRO,High income,2025.0,0.5219754253308129,3.105107902499612,False,True,False,Not classified
+TUN,Tunisia,EMRO,Lower middle income,2026.0,0.6471255244358771,2.2029464408646566,False,True,False,Not classified
+TUR,TÃ¼rkiye,EURO,Upper middle income,2026.0,0.7420005355290022,1.4410398543589054,False,True,False,Not classified
+TKM,Turkmenistan,EURO,Upper middle income,2018.0,0.9997538158542588,0.8617505847593254,False,False,False,Not classified
+UGA,Uganda,AFRO,Low income,2026.0,2.0273424904881665,0.1065076152944935,True,True,True,Primary country retained
+UKR,Ukraine,EURO,Lower middle income,2026.0,0.1009820637878848,0.8763821025967322,False,True,False,Not classified
+MKD,North Macedonia,EURO,Upper middle income,2025.0,0.0745888348390085,0.8622547962923044,False,True,False,Not classified
+EGY,Egypt,EMRO,Lower middle income,2026.0,1.0116037292910325,0.958620919609216,False,True,False,Not classified
+GBR,United Kingdom,EURO,High income,2026.0,0.293950946921895,1.225095988666151,False,True,False,Not classified
+TZA,Tanzania,AFRO,Lower middle income,2026.0,1.6367935682194372,0.2466146533943144,True,True,True,Primary country retained
+USA,United States of America,PAHO,High income,2026.0,0.3017051009231878,2.796113273432333,False,True,False,Not classified
+BFA,Burkina Faso,AFRO,Low income,2025.0,1.4995132804895008,0.1112718370980304,True,True,True,Primary country retained
+URY,Uruguay,PAHO,High income,2026.0,0.325,2.418964683115626,False,True,False,Not classified
+UZB,Uzbekistan,EURO,Lower middle income,2023.0,0.9140017508625572,0.5380972879896685,False,True,False,Not classified
+VEN,Venezuela,PAHO,,2026.0,0.5877827402391587,1.0707026713124277,False,True,False,Not classified
+YEM,Yemen,EMRO,Low income,2018.0,1.835560380825121,0.0294524784260595,True,False,False,Primary country; record before 2023
+ZMB,Zambia,AFRO,Lower middle income,2019.0,2.02839777847637,0.1038062283737024,True,False,False,Primary country; record before 2023

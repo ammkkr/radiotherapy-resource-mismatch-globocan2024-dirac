@@ -90,7 +90,12 @@
     "denominator_threshold_stability": "data/table_20_denominator_threshold_stability.csv",
     "missing_resource_bounds": "data/table_21_missing_resource_identification_bounds.csv",
     "construct_diagnostics": "data/table_22_construct_diagnostics.csv",
-    "country_stability": "data/table_23_country_stability.csv"
+    "country_stability": "data/table_23_country_stability.csv",
+    "common_baseline_version_reclassification": "data/table_24_common_2025_baseline_burden_version_reclassification.csv",
+    "dirac_record_recency_summary": "data/table_25_dirac_record_recency_sensitivity.csv",
+    "dirac_record_recency_country_detail": "data/table_26_dirac_record_recency_country_detail.csv",
+    "updated_country_stability": "data/table_27_country_stability_updated.csv",
+    "compact_stability_summary": "data/table_28_stability_summary.csv"
   },
-  "package_created_utc": "2026-07-11T18:03:34.763834+00:00"
+  "package_created_utc": "2026-07-11T22:39:46.128123+00:00"
 }

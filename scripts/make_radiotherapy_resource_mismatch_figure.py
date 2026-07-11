@@ -210,6 +210,11 @@ def load_data() -> tuple[pd.DataFrame, dict[str, Any]]:
         "gco2022_selected_growth_2022_2050",
         "gco2022_growth_percentile",
         "gco2024_growth_percentile_common",
+        "gco2022_selected_growth_2025_2050",
+        "gco2024_selected_growth_2025_2050",
+        "gco2022_common_year_growth_percentile",
+        "gco2024_common_year_growth_percentile",
+        "gco2024_selected_cases_2050",
     ]
     for col in numeric_cols:
         if col in df.columns:
@@ -374,8 +379,9 @@ def annotate_top_map_countries(ax: plt.Axes, df: pd.DataFrame, centroids: dict[s
 
 
 def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
-    plot_df = df[df["burden_version_transition"].ne("Not comparable")].copy()
-    cases = plot_df["selected_site_cases_2050"].to_numpy()
+    transition_col = "common_year_burden_version_transition"
+    plot_df = df[df[transition_col].ne("Not comparable")].copy()
+    cases = plot_df["gco2024_selected_cases_2050"].to_numpy()
     log_cases = np.log10(np.clip(cases, 1, None))
     sizes = 9 + 54 * (log_cases - log_cases.min()) / (log_cases.max() - log_cases.min())
     plot_df["point_size"] = sizes
@@ -387,10 +393,10 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
         "New in GCO version 2024": (PALETTE["update_new"], 1.00, 3),
     }
     for status, (color, alpha, zorder) in styles.items():
-        sub = plot_df[plot_df["burden_version_transition"].eq(status)]
+        sub = plot_df[plot_df[transition_col].eq(status)]
         ax.scatter(
-            sub["gco2022_growth_percentile"],
-            sub["gco2024_growth_percentile_common"],
+            sub["gco2022_common_year_growth_percentile"],
+            sub["gco2024_common_year_growth_percentile"],
             s=sub["point_size"],
             color=color,
             alpha=alpha,
@@ -405,16 +411,19 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
     ax.text(76.5, 3, "q75", fontsize=5.1, color=PALETTE["signal_dark"], ha="left", va="bottom")
     ax.text(3, 76.5, "q75", fontsize=5.1, color=PALETTE["signal_dark"], ha="left", va="bottom")
 
-    offsets = {"GTM": (8, 8), "NGA": (8, -11), "TGO": (8, 8), "ZWE": (-29, -12)}
+    offsets = {"PNG": (8, 8), "ZWE": (-29, -12)}
     for iso3, (dx, dy) in offsets.items():
-        row = plot_df[plot_df["country_iso3"].eq(iso3)].iloc[0]
+        selected = plot_df[plot_df["country_iso3"].eq(iso3)]
+        if selected.empty:
+            continue
+        row = selected.iloc[0]
         ax.annotate(
             iso3,
-            xy=(row["gco2022_growth_percentile"], row["gco2024_growth_percentile_common"]),
+            xy=(row["gco2022_common_year_growth_percentile"], row["gco2024_common_year_growth_percentile"]),
             xytext=(dx, dy),
             textcoords="offset points",
             fontsize=5.4,
-            color=PALETTE["update_new"] if iso3 == "GTM" else PALETTE["update_exit"],
+            color=PALETTE["update_new"] if iso3 == "PNG" else PALETTE["update_exit"],
             ha="left",
             va="center",
             arrowprops={"arrowstyle": "-", "lw": 0.45, "color": PALETTE["neutral_mid"]},
@@ -424,12 +433,15 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
     ax.set_ylim(0, 101)
     ax.set_xticks([0, 25, 50, 75, 100])
     ax.set_yticks([0, 25, 50, 75, 100])
-    ax.set_xlabel("Projected growth percentile, GCO version 2022")
-    ax.set_ylabel("Projected growth percentile, GCO version 2024")
+    ax.set_xlabel("Projected 2025-2050 growth percentile\nGCO version 2022")
+    ax.set_ylabel("Projected 2025-2050 growth percentile\nGCO version 2024")
+    retained_count = int(plot_df[transition_col].eq("Retained").sum())
+    new_count = int(plot_df[transition_col].eq("New in GCO version 2024").sum())
+    no_longer_count = int(plot_df[transition_col].eq("No longer screen-positive").sum())
     handles = [
-        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["signal"], markeredgecolor="white", markersize=4.8, label="Retained (22)"),
-        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_new"], markeredgecolor="white", markersize=4.8, label="New (1)"),
-        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_exit"], markeredgecolor="white", markersize=4.8, label="No longer (3)"),
+        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["signal"], markeredgecolor="white", markersize=4.8, label=f"Retained ({retained_count})"),
+        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_new"], markeredgecolor="white", markersize=4.8, label=f"New ({new_count})"),
+        Line2D([0], [0], marker="o", linestyle="none", markerfacecolor=PALETTE["update_exit"], markeredgecolor="white", markersize=4.8, label=f"No longer ({no_longer_count})"),
     ]
     ax.legend(
         handles=handles,
@@ -443,7 +455,7 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame) -> None:
     ax.text(
         0.01,
         -0.27,
-        "Same latest-reported DIRAC snapshot in both versions.\nPoint area encodes GCO version 2024 selected-site cases in 2050.",
+        "Common 2025 baseline and same latest-reported DIRAC snapshot.\nPoint area encodes GCO version 2024 selected-site cases in 2050.",
         transform=ax.transAxes,
         fontsize=5.1,
         color=PALETTE["neutral_mid"],
@@ -630,6 +642,20 @@ def make_figure() -> dict[str, Path]:
         "gco2022_screen_positive",
         "current_screen_positive",
         "burden_version_transition",
+        "gco2022_selected_cases_2025",
+        "gco2022_selected_cases_2050",
+        "gco2022_selected_growth_2025_2050",
+        "gco2024_selected_cases_2025",
+        "gco2024_selected_cases_2050",
+        "gco2024_selected_growth_2025_2050",
+        "gco2022_common_year_growth_percentile",
+        "gco2024_common_year_growth_percentile",
+        "gco2022_common_year_screen_positive",
+        "gco2024_common_year_screen_positive",
+        "common_year_burden_version_transition",
+        "dirac_last_update_year",
+        "recent_dirac_record",
+        "recent_record_screen_positive",
     ]
     df[country_source_cols].to_csv(
         COUNTRY_SOURCE_DATA,
@@ -665,7 +691,7 @@ def write_design_note(
     lines = [
         "# Radiotherapy Resource Mismatch Figure Contract",
         "",
-        "Core conclusion: The GCO version 2024 burden update retained a stable country core while changing four classifications, and missing resource observations widened regional uncertainty.",
+        "Core conclusion: With a common 2025 baseline and fixed resource snapshot, the GCO version 2024 update retained 23 of 24 countries while missing resource observations widened regional uncertainty.",
         "Figure archetype: asymmetric mixed-modality figure.",
         "Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG.",
         "Backend: Python/matplotlib only.",
@@ -674,13 +700,13 @@ def write_design_note(
         "## Panel Map",
         "",
         "- a: Hero world map; fill encodes latest-reported MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries meeting both thresholds, and hatching marks DIRAC-missing observations.",
-        "- b: Burden-version comparison; axes are within-version projected growth percentiles for 149 common matched countries, colors identify retained, new, and no-longer-screen-positive countries, and point area encodes version 2024 selected-site cases in 2050.",
+        "- b: Common-baseline burden-version comparison; axes are within-version 2025-2050 projected growth percentiles for 149 common matched countries, colors identify retained, new, and no-longer-screen-positive countries, and point area encodes version 2024 selected-site cases in 2050.",
         "- c: WHO-region partial-identification bounds; the lower endpoint is the observed count divided by all regional GCO country records, and the upper endpoint additionally treats high-growth DIRAC-missing countries as meeting the resource criterion.",
         "",
         "## Evidence Hierarchy",
         "",
         "- Hero evidence: geographic co-localisation of projected selected-site incidence growth and sparse latest-reported MV-unit density.",
-        "- Update evidence: the burden-version comparison separates the GCO data revision from resource change by holding the same latest-reported DIRAC snapshot fixed.",
+        "- Update evidence: the burden-version comparison separates the GCO data revision from baseline-year and resource changes by using a common 2025 baseline and holding the same latest-reported DIRAC snapshot fixed.",
         "- Missingness evidence: regional intervals show the range compatible with observed and high-growth resource-unknown country records.",
         "",
         "## Thresholds and n",
@@ -699,7 +725,7 @@ def write_design_note(
         "- DIRAC-absent countries are treated as missing resource observations without assigned measured resource density.",
         "- The figure visualises selected cancer-site incidence, not modelled radiotherapy demand or utilisation.",
         "- MV units are latest-reported DIRAC country-table counts and are not projected to 2050.",
-        "- Panel b is a burden-version comparison, not a longitudinal resource analysis; the latest-reported DIRAC snapshot is fixed.",
+        "- Panel b is a common-2025-baseline burden-version comparison, not a longitudinal resource analysis; the latest-reported DIRAC snapshot is fixed.",
         "- Panel c intervals are deterministic missing-resource bounds, not confidence intervals.",
         "",
         "## Exported Files",

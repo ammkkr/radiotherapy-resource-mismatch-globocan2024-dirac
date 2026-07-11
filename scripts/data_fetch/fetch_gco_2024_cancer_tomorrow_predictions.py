@@ -22,11 +22,11 @@ from urllib.request import Request, urlopen
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-POPULATION_CSV = PROJECT_ROOT / "data" / "interim" / "gco_populations_2024_dictionary.csv"
-RULES_CSV = PROJECT_ROOT / "data" / "interim" / "gco_2024_cancer_site_analysis_rules.csv"
-RAW_DIR = PROJECT_ROOT / "data" / "raw" / "gco_cancer_tomorrow_2024"
-INTERIM_DIR = PROJECT_ROOT / "data" / "interim"
-LOG_DIR = PROJECT_ROOT / "logs"
+POPULATION_CSV = PROJECT_ROOT / "data" / "source" / "gco_populations_2024_dictionary.csv"
+RULES_CSV = PROJECT_ROOT / "data" / "source" / "gco_2024_cancer_site_analysis_rules.csv"
+RAW_DIR = PROJECT_ROOT / "data" / "source" / "raw" / "gco_cancer_tomorrow_2024"
+INTERIM_DIR = PROJECT_ROOT / "data" / "source"
+LOG_DIR = PROJECT_ROOT / "data" / "source" / "logs"
 
 BASE_URL = "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024"
 GLOBOCAN_VERSION = "2024"
@@ -268,7 +268,7 @@ def main() -> int:
     expected_rows = len(population_codes) * len(cancer_codes) * 2 * 7
 
     run_log = {
-        "script": str(Path(__file__).resolve()),
+        "script": f"scripts/data_fetch/{Path(__file__).name}",
         "run_finished_utc": datetime.now(timezone.utc).isoformat(),
         "globocan_version": GLOBOCAN_VERSION,
         "api_base": BASE_URL,

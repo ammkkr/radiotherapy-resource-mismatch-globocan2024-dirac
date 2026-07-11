@@ -17,11 +17,11 @@ from scripts.data_fetch import fetch_gco_2024_cancer_tomorrow_predictions as cor
 
 
 core.GLOBOCAN_VERSION = "2022"
-core.POPULATION_CSV = PROJECT_ROOT / "data" / "interim" / "gco_populations_2022_dictionary.csv"
-core.RAW_DIR = PROJECT_ROOT / "data" / "raw" / "gco_cancer_tomorrow_2022"
+core.POPULATION_CSV = PROJECT_ROOT / "data" / "source" / "gco_populations_2022_dictionary.csv"
+core.RAW_DIR = PROJECT_ROOT / "data" / "source" / "raw" / "gco_cancer_tomorrow_2022"
 core.BASE_URL = "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022"
-core.OUTPUT_CSV = PROJECT_ROOT / "data" / "interim" / "gco_cancer_tomorrow_2022_predictions_long.csv"
-core.FETCH_LOG = PROJECT_ROOT / "logs" / "gco_2022_cancer_tomorrow_predictions_fetch_log.json"
+core.OUTPUT_CSV = PROJECT_ROOT / "data" / "source" / "gco_cancer_tomorrow_2022_predictions_long.csv"
+core.FETCH_LOG = PROJECT_ROOT / "data" / "source" / "logs" / "gco_2022_cancer_tomorrow_predictions_fetch_log.json"
 
 
 if __name__ == "__main__":

@@ -1,0 +1,3 @@
+Analysis,"Countries analyzed, No.","Growth threshold, %",Density threshold,"Countries meeting both thresholds, No.","Primary recent-record countries retained, No.",ISO3 meeting both thresholds
+"Primary, all latest-reported DIRAC years",150,119.21143269617444,0.5063462807568625,23,16,AGO;BFA;CIV;CMR;COD;ETH;GHA;GTM;KEN;MDG;MLI;MOZ;MWI;NER;PNG;RWA;SDN;SEN;SYR;TZA;UGA;YEM;ZMB
+Restricted to DIRAC record year 2023 or later,125,114.57264957264957,0.6431997274223857,19,16,AGO;BFA;CIV;CMR;GHA;GTM;KEN;MLI;MOZ;MWI;NAM;NIC;PNG;RWA;SEN;SYR;TGO;TZA;UGA

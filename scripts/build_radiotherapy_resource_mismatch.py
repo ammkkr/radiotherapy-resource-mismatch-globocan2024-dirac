@@ -12,12 +12,12 @@ from typing import Any
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DATA_INTERIM = PROJECT_ROOT / "data" / "interim"
-DATA_PROCESSED = PROJECT_ROOT / "data" / "processed"
-TABLE_DIR = PROJECT_ROOT / "results" / "tables"
-REPORT_DIR = PROJECT_ROOT / "results" / "reports"
-PROTOCOL_DIR = PROJECT_ROOT / "docs" / "protocol"
-LOG_DIR = PROJECT_ROOT / "logs"
+DATA_INTERIM = PROJECT_ROOT / "data" / "source"
+DATA_PROCESSED = PROJECT_ROOT / "data"
+TABLE_DIR = PROJECT_ROOT / "data"
+REPORT_DIR = PROJECT_ROOT / "docs"
+PROTOCOL_DIR = PROJECT_ROOT / "data"
+LOG_DIR = PROJECT_ROOT / "data"
 
 GCO_PREDICTIONS = DATA_INTERIM / "gco_cancer_tomorrow_2024_predictions_long.csv"
 DIRAC_RESOURCES = DATA_INTERIM / "dirac_country_resources.csv"
@@ -413,7 +413,7 @@ def write_report(summary: dict[str, Any], top_rows: list[dict[str, Any]], paths:
     for label, path in paths.items():
         lines.append(f"- {label}: `{path.relative_to(PROJECT_ROOT)}`")
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    (REPORT_DIR / "report_06_radiotherapy_resource_mismatch_qc.md").write_text("\n".join(lines), encoding="utf-8")
+    (REPORT_DIR / "qc_report.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> int:
@@ -440,7 +440,7 @@ def main() -> int:
     output_top = TABLE_DIR / "table_09_unit_pressure_top_countries.csv"
     output_region = TABLE_DIR / "table_10_region_summary.csv"
     output_site = TABLE_DIR / "table_11_selected_site_burden.csv"
-    output_log = LOG_DIR / "radiotherapy_resource_mismatch_build_log.json"
+    output_log = LOG_DIR / "build_log_sanitized.json"
 
     write_csv(output_main, records)
     top_fields = [
@@ -468,17 +468,17 @@ def main() -> int:
     write_csv(output_site, site_rows)
 
     summary = {
-        "script": str(Path(__file__).resolve()),
+        "script": "scripts/build_radiotherapy_resource_mismatch.py",
         "run_finished_utc": datetime.now(timezone.utc).isoformat(),
         "merge": merge,
         "metrics": metrics,
         "rt_site_codes": [row["cancer_code"] for row in RT_SITE_RULES],
         "outputs": {
-            "main_country_dataset": str(output_main),
-            "top_countries_table": str(output_top),
-            "region_summary_table": str(output_region),
-            "site_burden_table": str(output_site),
-            "site_rules": str(PROTOCOL_DIR / "selected_cancer_site_rules.csv"),
+            "main_country_dataset": output_main.relative_to(PROJECT_ROOT).as_posix(),
+            "top_countries_table": output_top.relative_to(PROJECT_ROOT).as_posix(),
+            "region_summary_table": output_region.relative_to(PROJECT_ROOT).as_posix(),
+            "site_burden_table": output_site.relative_to(PROJECT_ROOT).as_posix(),
+            "site_rules": (PROTOCOL_DIR / "selected_cancer_site_rules.csv").relative_to(PROJECT_ROOT).as_posix(),
         },
     }
     output_log.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")

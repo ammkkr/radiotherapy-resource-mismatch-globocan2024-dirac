@@ -1,10 +1,10 @@
 """Fetch country-level radiotherapy resource data from IAEA DIRAC.
 
 Outputs:
-  - raw JSON under data/raw/dirac/
-  - parsed country resource CSV under data/interim/
-  - a fetch log under logs/
-  - a short codebook under data/codebooks/
+  - raw JSON under data/source/raw/dirac/
+  - parsed country resource CSV under data/source/
+  - a fetch log under data/source/logs/
+  - a short codebook under docs/
 """
 
 from __future__ import annotations
@@ -20,10 +20,10 @@ from urllib.request import Request, urlopen
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = PROJECT_ROOT / "data" / "raw" / "dirac"
-INTERIM_DIR = PROJECT_ROOT / "data" / "interim"
-CODEBOOK_DIR = PROJECT_ROOT / "data" / "codebooks"
-LOG_DIR = PROJECT_ROOT / "logs"
+RAW_DIR = PROJECT_ROOT / "data" / "source" / "raw" / "dirac"
+INTERIM_DIR = PROJECT_ROOT / "data" / "source"
+CODEBOOK_DIR = PROJECT_ROOT / "docs"
+LOG_DIR = PROJECT_ROOT / "data" / "source" / "logs"
 
 DIRAC_COUNTRIES_URL = "https://dirac.iaea.org/api/DataGridWebApi/GetCountriesAndRegions"
 
@@ -254,7 +254,7 @@ def main() -> int:
             "bytes": args.from_json.stat().st_size,
             "started_utc": datetime.now(timezone.utc).isoformat(),
             "finished_utc": datetime.now(timezone.utc).isoformat(),
-            "local_file": str(args.from_json),
+            "local_file": args.from_json.name,
         }
         if args.from_json.resolve() != raw_path.resolve():
             write_json(raw_path, payload)
@@ -271,15 +271,15 @@ def main() -> int:
 
     summary = summarize(records)
     log = {
-        "script": str(Path(__file__).resolve()),
+        "script": "scripts/fetch_dirac_country_resources.py",
         "run_started_utc": meta["started_utc"],
         "run_finished_utc": datetime.now(timezone.utc).isoformat(),
         "source": meta,
         "summary": summary,
         "outputs": {
-            "raw_json": str(raw_path),
-            "csv": str(csv_path),
-            "codebook": str(codebook_path),
+            "raw_json": raw_path.relative_to(PROJECT_ROOT).as_posix(),
+            "csv": csv_path.relative_to(PROJECT_ROOT).as_posix(),
+            "codebook": codebook_path.relative_to(PROJECT_ROOT).as_posix(),
         },
     }
     write_json(log_path, log)

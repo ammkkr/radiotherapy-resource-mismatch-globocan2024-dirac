@@ -9,7 +9,8 @@ created from public aggregate data sources.
   cancer incidence and mortality. Extracted API data versions were 2022 and 2024.
 - IAEA Directory of Radiotherapy Centres (DIRAC) was used for country-level
   radiotherapy-resource variables. The same latest-reported snapshot was held
-  fixed in the burden-version comparison.
+  fixed in the burden-version comparison; record year was retained for the
+  resource-recency analysis.
 - Natural Earth country geometry was used for the world map.
 
 ## Redistribution Note
