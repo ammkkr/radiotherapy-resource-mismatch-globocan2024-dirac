@@ -1,6 +1,6 @@
 # Radiotherapy Resource Mismatch Dataset QC
 
-Run finished UTC: 2026-07-11T11:11:46.567751+00:00
+Run finished UTC: 2026-07-11T14:16:05.621868+00:00
 
 ## Inputs
 
@@ -15,12 +15,12 @@ Run finished UTC: 2026-07-11T11:11:46.567751+00:00
 - GCO records without DIRAC match: 36
 - DIRAC records without GCO match: 5
 
-## Acceleration-Risk Thresholds
+## Two-Threshold Screen
 
 - Complete-case records: 150
 - High-growth threshold, relative selected-site case growth q75: 1.1921
 - Lower-quartile unit-density threshold, MV units per 1000 selected-site 2050 cases q25: 0.5063
-- Acceleration-risk countries: 23
+- Countries meeting both thresholds: 23
 
 ## Interpretation Notes
 

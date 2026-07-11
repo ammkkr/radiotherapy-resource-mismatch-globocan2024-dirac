@@ -1,4 +1,4 @@
-Pressure rank,Country,ISO3,WHO region,Acceleration-risk,2050 cases,MV units,2050 cases/MV unit,MV units/1000 cases,"Growth, %"
+Pressure rank,Country,ISO3,WHO region,Both thresholds,2050 cases,MV units,2050 cases/MV unit,MV units/1000 cases,"Growth, %"
 1,Democratic Republic of the Congo,COD,AFRO,Yes,"91,916",1,"91,916",0.011,139
 2,Yemen,YEM,EMRO,Yes,"33,953",1,"33,953",0.029,184
 3,Ethiopia,ETH,AFRO,Yes,"99,613",3,"33,204",0.030,141

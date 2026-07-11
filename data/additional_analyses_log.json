@@ -1,0 +1,43 @@
+{
+  "version": {
+    "common_matched_countries": 149,
+    "gco2022_growth_q75": 1.3684318977951782,
+    "gco2022_density_q25": 0.5017917963702246,
+    "gco2022_screen_positive_count": 25,
+    "gco2024_screen_positive_count_common": 23,
+    "retained_count": 22,
+    "new_in_2024": [
+      "GTM"
+    ],
+    "no_longer_in_2024": [
+      "NGA",
+      "TGO",
+      "ZWE"
+    ],
+    "jaccard": 0.8461538461538461
+  },
+  "decoupled": {
+    "growth_q75": 1.1921143269617445,
+    "density_2050_q25": 0.5063462807568625,
+    "density_2024_q25": 0.860111186093704,
+    "baseline_density_screen_positive_count": 21,
+    "baseline_density_primary_retained": 21,
+    "baseline_density_not_retained": [
+      "GTM",
+      "SYR"
+    ],
+    "growth_q80": 1.3392100008355683,
+    "density_q20": 0.3370367061053232,
+    "strict_screen_positive_count": 16,
+    "strict_primary_retained": 16,
+    "strict_not_retained": [
+      "GHA",
+      "GTM",
+      "KEN",
+      "MDG",
+      "PNG",
+      "RWA",
+      "SYR"
+    ]
+  }
+}

@@ -6,9 +6,10 @@ created from public aggregate data sources.
 ## Source Data
 
 - Global Cancer Observatory Cancer Tomorrow was used for projected country-level
-  cancer incidence and mortality. The extracted API data version was 2024.
+  cancer incidence and mortality. Extracted API data versions were 2022 and 2024.
 - IAEA Directory of Radiotherapy Centres (DIRAC) was used for country-level
-  radiotherapy-resource variables.
+  radiotherapy-resource variables. The same latest-reported snapshot was held
+  fixed in the burden-version comparison.
 - Natural Earth country geometry was used for the world map.
 
 ## Redistribution Note

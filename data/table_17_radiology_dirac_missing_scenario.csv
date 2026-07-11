@@ -1,3 +1,3 @@
 Group,Country denominator,Countries meeting screen or high-growth criterion,Interpretation
-Matched DIRAC resource records,150,23,Classified acceleration-risk countries among matched records.
+Matched DIRAC resource records,150,23,Countries meeting both primary thresholds among matched records.
 No DIRAC match,36,17,Exceeded the high-growth threshold but had unknown latest-reported MV-unit status.

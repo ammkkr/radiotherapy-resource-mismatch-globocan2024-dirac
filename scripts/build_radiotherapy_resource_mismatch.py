@@ -304,7 +304,7 @@ def add_mismatch_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
         abs_increase = to_float(row.get("selected_site_case_increase_2050"))
         row["high_growth_q75"] = "1" if not math.isnan(rel_growth) and rel_growth >= growth_q75 else "0"
         row["lower_quartile_unit_density"] = "1" if not math.isnan(resource) and resource <= resource_q25 else "0"
-        row["acceleration_risk"] = "1" if row["high_growth_q75"] == "1" and row["lower_quartile_unit_density"] == "1" else "0"
+        row["meets_both_thresholds"] = "1" if row["high_growth_q75"] == "1" and row["lower_quartile_unit_density"] == "1" else "0"
         row["share_global_selected_site_case_increment"] = safe_div(abs_increase, total_increment)
 
     pressure_ranked = sorted(
@@ -327,7 +327,7 @@ def add_mismatch_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
         "growth_q75": growth_q75,
         "resource_q25": resource_q25,
         "global_rt_relevant_case_increment": total_increment,
-        "acceleration_risk_count": sum(row["acceleration_risk"] == "1" for row in records),
+        "meets_both_thresholds_count": sum(row["meets_both_thresholds"] == "1" for row in records),
     }
 
 
@@ -338,13 +338,13 @@ def region_summary(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     for region, rows in sorted(grouped.items()):
         matched = [row for row in rows if row["dirac_matched"] == "1"]
-        mismatch = [row for row in rows if row["acceleration_risk"] == "1"]
+        mismatch = [row for row in rows if row["meets_both_thresholds"] == "1"]
         out.append(
             {
                 "who_region": region,
                 "gco_countries": len(rows),
                 "dirac_matched_countries": len(matched),
-                "acceleration_risk_countries": len(mismatch),
+                "countries_meeting_both_thresholds": len(mismatch),
                 "selected_site_cases_2050": sum(to_float(row["selected_site_cases_2050"]) for row in rows if not math.isnan(to_float(row["selected_site_cases_2050"]))),
                 "selected_site_case_increment_2050": sum(to_float(row["selected_site_case_increase_2050"]) for row in rows if not math.isnan(to_float(row["selected_site_case_increase_2050"]))),
                 "mv_therapy_units": sum(to_float(row["mv_therapy_units"]) for row in matched if not math.isnan(to_float(row["mv_therapy_units"]))),
@@ -372,12 +372,12 @@ def write_report(summary: dict[str, Any], top_rows: list[dict[str, Any]], paths:
         f"- GCO records without DIRAC match: {summary['merge']['gco_unmatched_count']}",
         f"- DIRAC records without GCO match: {summary['merge']['dirac_unmatched_count']}",
         "",
-        "## Acceleration-Risk Thresholds",
+        "## Two-Threshold Screen",
         "",
         f"- Complete-case records: {summary['metrics']['complete_case_records']}",
         f"- High-growth threshold, relative selected-site case growth q75: {summary['metrics']['growth_q75']:.4f}",
         f"- Lower-quartile unit-density threshold, MV units per 1000 selected-site 2050 cases q25: {summary['metrics']['resource_q25']:.4f}",
-        f"- Acceleration-risk countries: {summary['metrics']['acceleration_risk_count']}",
+        f"- Countries meeting both thresholds: {summary['metrics']['meets_both_thresholds_count']}",
         "",
         "## Interpretation Notes",
         "",
@@ -460,7 +460,7 @@ def main() -> int:
         "selected_site_cases_per_mv_unit_2050",
         "mv_units_per_1000_selected_site_cases_2050",
         "rt_centres_per_10000_selected_site_cases_2050",
-        "acceleration_risk",
+        "meets_both_thresholds",
         "dirac_last_update_year",
     ]
     write_csv(output_top, top_rows[:30], top_fields)
