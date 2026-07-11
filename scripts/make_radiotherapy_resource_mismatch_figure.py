@@ -1,4 +1,4 @@
-"""Create a 3-panel Nature-style figure for RT resource mismatch.
+"""Create a 3-panel Nature-style figure for selected-site/MV-unit mismatch.
 
 Backend: Python/matplotlib only, following the nature-figure contract.
 """
@@ -63,19 +63,27 @@ COUNTRY_SHORT = {
     "Congo, Democratic Republic of": "DR Congo",
     "Tanzania, United Republic of": "Tanzania",
     "Bolivia (Plurinational State of)": "Bolivia",
+    "Korea, Democratic People's Republic of": "DPR Korea",
+    "Democratic Republic of the Congo": "DR Congo",
+    "Tanzania, United Republic of": "Tanzania",
+    "CÃƒÂ´te d'Ivoire": "Cote d'Ivoire",
+    "CÃ´te d'Ivoire": "Cote d'Ivoire",
 }
 
 LABEL_OFFSETS = {
     "ETH": (20, 8),
     "COD": (-44, -8),
-    "UGA": (22, 2),
     "YEM": (30, 8),
-    "MWI": (28, -8),
-    "ZMB": (30, -15),
-    "NGA": (-35, 13),
-    "AGO": (-40, -12),
-    "TZA": (28, 6),
+    "ZWE": (25, 6),
     "MOZ": (34, -20),
+    "PRK": (34, 6),
+    "NER": (-32, 10),
+    "MWI": (28, -8),
+    "AGO": (-40, -12),
+    "NGA": (-35, 13),
+    "UGA": (22, 2),
+    "ZMB": (30, -15),
+    "TZA": (28, 6),
 }
 
 
@@ -189,18 +197,28 @@ def polygon_area_and_centroid(points: list[tuple[float, float]]) -> tuple[float,
 def load_data() -> tuple[pd.DataFrame, dict[str, Any]]:
     df = pd.read_csv(DATASET)
     numeric_cols = [
-        "rt_mismatch_rank",
-        "rt_mismatch_score",
-        "rt_relevant_cases_2024",
-        "rt_relevant_cases_2050",
-        "rt_relevant_absolute_case_increase_2050",
-        "rt_relevant_relative_case_growth_2050",
+        "selected_site_cases_2024",
+        "selected_site_cases_2050",
+        "selected_site_case_increase_2050",
+        "selected_site_relative_case_growth_2050",
         "mv_therapy_units",
-        "mv_units_per_1000_rt_relevant_cases_2050",
+        "mv_units_per_1000_selected_site_cases_2050",
     ]
     for col in numeric_cols:
         if col in df.columns:
             df[col] = to_num(df[col])
+    df["selected_site_cases_per_mv_unit_2050"] = np.where(
+        (df["dirac_matched"].astype(str).eq("1")) & (df["mv_therapy_units"] > 0),
+        df["selected_site_cases_2050"] / df["mv_therapy_units"],
+        np.nan,
+    )
+    df["unit_pressure_rank"] = np.nan
+    pressure_index = (
+        df.dropna(subset=["selected_site_cases_per_mv_unit_2050"])
+        .sort_values("selected_site_cases_per_mv_unit_2050", ascending=False)
+        .index
+    )
+    df.loc[pressure_index, "unit_pressure_rank"] = np.arange(1, len(pressure_index) + 1)
     with BUILD_LOG.open("r", encoding="utf-8") as handle:
         log = json.load(handle)
     return df, log
@@ -236,7 +254,7 @@ def draw_world_map(
             row = row.iloc[0]
 
         if row is not None and str(row.get("dirac_matched", "")) == "1":
-            density = float(row["mv_units_per_1000_rt_relevant_cases_2050"])
+            density = float(row["mv_units_per_1000_selected_site_cases_2050"])
             facecolor = cmap(norm(max(density, norm.vmin)))
             collection = "value"
         elif row is not None:
@@ -259,7 +277,7 @@ def draw_world_map(
                 missing_patches.append(patch)
             else:
                 not_included_patches.append(patch)
-            if row is not None and str(row.get("high_growth_low_resource", "")) == "1":
+            if row is not None and str(row.get("acceleration_risk", "")) == "1":
                 highlight_patches.append(Polygon(exterior, closed=True))
             area, centroid = polygon_area_and_centroid(exterior)
             if area > largest_area:
@@ -319,7 +337,7 @@ def draw_world_map(
 
 
 def annotate_top_map_countries(ax: plt.Axes, df: pd.DataFrame, centroids: dict[str, tuple[float, float]]) -> None:
-    top = df.dropna(subset=["rt_mismatch_rank"]).sort_values("rt_mismatch_rank").head(10)
+    top = df.dropna(subset=["unit_pressure_rank"]).sort_values("unit_pressure_rank").head(10)
     for _, row in top.iterrows():
         iso3 = row["country_iso3"]
         if iso3 not in centroids:
@@ -327,7 +345,7 @@ def annotate_top_map_countries(ax: plt.Axes, df: pd.DataFrame, centroids: dict[s
         x, y = centroids[iso3]
         dx, dy = LABEL_OFFSETS.get(iso3, (18, 6))
         ax.annotate(
-            f"{int(row['rt_mismatch_rank'])} {iso3}",
+            f"{int(row['unit_pressure_rank'])} {iso3}",
             xy=(x, y),
             xytext=(x + dx, y + dy),
             ha="left" if dx > 0 else "right",
@@ -347,13 +365,13 @@ def annotate_top_map_countries(ax: plt.Axes, df: pd.DataFrame, centroids: dict[s
 
 
 def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
-    top = df.dropna(subset=["rt_mismatch_rank"]).sort_values("rt_mismatch_rank").head(15).copy()
-    top = top.sort_values("rt_mismatch_rank", ascending=False)
+    top = df.dropna(subset=["unit_pressure_rank"]).sort_values("unit_pressure_rank").head(15).copy()
+    top = top.sort_values("unit_pressure_rank", ascending=False)
     y = np.arange(len(top))
-    density = top["mv_units_per_1000_rt_relevant_cases_2050"].to_numpy()
-    cases = top["rt_relevant_cases_2050"].to_numpy()
+    density = top["mv_units_per_1000_selected_site_cases_2050"].to_numpy()
+    cases = top["selected_site_cases_2050"].to_numpy()
     sizes = 20 + 150 * np.sqrt(cases / np.nanmax(cases))
-    colors = np.where(top["high_growth_low_resource"].astype(str).eq("1"), PALETTE["signal"], PALETTE["neutral_mid"])
+    colors = np.where(top["acceleration_risk"].astype(str).eq("1"), PALETTE["signal"], PALETTE["neutral_mid"])
 
     ax.hlines(y, 0.008, density, color="#BFBFBF", lw=0.65, zorder=1)
     ax.scatter(density, y, s=sizes, c=colors, edgecolor="white", linewidth=0.55, zorder=3)
@@ -361,7 +379,7 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
     ax.text(
         resource_q25 * 1.05,
         len(top) - 0.15,
-        "country q25",
+        "country q25\ndensity",
         fontsize=5.2,
         color=PALETTE["signal_dark"],
         ha="left",
@@ -370,7 +388,7 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
     )
 
     labels = [
-        wrap_country_label(int(row["rt_mismatch_rank"]), row["country_iso3"], row["gco_country"])
+        wrap_country_label(int(row["unit_pressure_rank"]), row["country_iso3"], row["gco_country"])
         for _, row in top.iterrows()
     ]
     ax.set_yticks(y)
@@ -379,11 +397,11 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
     ax.set_xlim(0.008, 0.75)
     ax.set_xticks([0.01, 0.03, 0.1, 0.3, 0.75])
     ax.set_xticklabels(["0.01", "0.03", "0.1", "0.3", "0.75"])
-    ax.set_xlabel("MV units per 1000 projected RT-relevant cases, 2050", labelpad=5.0)
+    ax.set_xlabel("MV units per 1000 selected-site cases, 2050", labelpad=5.0)
     ax.tick_params(axis="y", length=0, pad=2)
 
     for yi, (_, row) in zip(y, top.iterrows()):
-        growth = 100 * float(row["rt_relevant_relative_case_growth_2050"])
+        growth = 100 * float(row["selected_site_relative_case_growth_2050"])
         mv = int(float(row["mv_therapy_units"]))
         text = f"+{growth:.0f}%; {mv} MV"
         ax.text(0.76, yi, text, ha="left", va="center", fontsize=5.15, color=PALETTE["neutral_dark"])
@@ -391,7 +409,7 @@ def draw_panel_b(ax: plt.Axes, df: pd.DataFrame, resource_q25: float) -> None:
     ax.text(
         0.01,
         -0.31,
-        "Red = high growth + low resource; grey = other top-scoring country.\nPoint area encodes 2050 RT-relevant cases.",
+        "Red = high growth + lower-quartile unit density;\ngrey = other high-pressure country. Point area encodes 2050 selected-site cases.",
         transform=ax.transAxes,
         fontsize=5.25,
         color=PALETTE["neutral_mid"],
@@ -406,20 +424,20 @@ def make_region_summary(df: pd.DataFrame) -> pd.DataFrame:
     matched = matched[matched["who_region"].notna() & (matched["who_region"].astype(str) != "")]
     rows = []
     for region, sub in matched.groupby("who_region", sort=False):
-        cases_2024 = float(sub["rt_relevant_cases_2024"].sum())
-        cases_2050 = float(sub["rt_relevant_cases_2050"].sum())
+        cases_2024 = float(sub["selected_site_cases_2024"].sum())
+        cases_2050 = float(sub["selected_site_cases_2050"].sum())
         mv_units = float(sub["mv_therapy_units"].sum())
         rows.append(
             {
                 "who_region": region,
                 "matched_countries": int(len(sub)),
-                "high_growth_low_resource_countries": int((sub["high_growth_low_resource"].astype(str) == "1").sum()),
-                "rt_relevant_cases_2024_matched": cases_2024,
-                "rt_relevant_cases_2050_matched": cases_2050,
-                "rt_relevant_absolute_case_increase_2050_matched": cases_2050 - cases_2024,
-                "rt_relevant_relative_case_growth_2050_matched": (cases_2050 - cases_2024) / cases_2024 if cases_2024 else math.nan,
+                "acceleration_risk_countries": int((sub["acceleration_risk"].astype(str) == "1").sum()),
+                "selected_site_cases_2024_matched": cases_2024,
+                "selected_site_cases_2050_matched": cases_2050,
+                "selected_site_case_increase_2050_matched": cases_2050 - cases_2024,
+                "selected_site_relative_case_growth_2050_matched": (cases_2050 - cases_2024) / cases_2024 if cases_2024 else math.nan,
                 "mv_therapy_units_matched": mv_units,
-                "mv_units_per_1000_rt_relevant_cases_2050_matched": mv_units * 1000 / cases_2050 if cases_2050 else math.nan,
+                "mv_units_per_1000_selected_site_cases_2050_matched": mv_units * 1000 / cases_2050 if cases_2050 else math.nan,
             }
         )
     return pd.DataFrame(rows)
@@ -427,9 +445,9 @@ def make_region_summary(df: pd.DataFrame) -> pd.DataFrame:
 
 def draw_panel_c(ax: plt.Axes, region_df: pd.DataFrame, growth_q75: float, resource_q25: float) -> None:
     plot_df = region_df[region_df["who_region"].isin(REGION_COLORS)].copy()
-    x = plot_df["rt_relevant_relative_case_growth_2050_matched"].to_numpy()
-    y = plot_df["mv_units_per_1000_rt_relevant_cases_2050_matched"].to_numpy()
-    cases = plot_df["rt_relevant_cases_2050_matched"].to_numpy()
+    x = plot_df["selected_site_relative_case_growth_2050_matched"].to_numpy()
+    y = plot_df["mv_units_per_1000_selected_site_cases_2050_matched"].to_numpy()
+    cases = plot_df["selected_site_cases_2050_matched"].to_numpy()
     sizes = 120 + 500 * np.sqrt(cases / np.nanmax(cases))
 
     ax.axvspan(growth_q75, max(max(x) * 1.06, growth_q75 * 1.15), color=PALETTE["signal"], alpha=0.055, zorder=0)
@@ -441,7 +459,7 @@ def draw_panel_c(ax: plt.Axes, region_df: pd.DataFrame, growth_q75: float, resou
         region = row["who_region"]
         color = REGION_COLORS.get(region, PALETTE["neutral_mid"])
         ax.scatter(xi, yi, s=si, color=color, alpha=0.88, edgecolor="white", linewidth=0.75, zorder=3)
-        label = f"{region}\n{int(row['high_growth_low_resource_countries'])}/{int(row['matched_countries'])}"
+        label = f"{region}\n{int(row['acceleration_risk_countries'])}/{int(row['matched_countries'])}"
         ax.text(xi, yi, label, ha="center", va="center", fontsize=5.5, color="white" if region in ["AFRO", "WPRO"] else PALETTE["black"], zorder=4)
 
     ax.set_yscale("log")
@@ -451,12 +469,12 @@ def draw_panel_c(ax: plt.Axes, region_df: pd.DataFrame, growth_q75: float, resou
     ax.set_xticklabels(["25", "50", "75", "100", "125"])
     ax.set_yticks([0.1, 0.3, 1, 3])
     ax.set_yticklabels(["0.1", "0.3", "1", "3"])
-    ax.set_xlabel("Regional RT-relevant case growth, 2024-2050 (%)")
-    ax.set_ylabel("MV units per 1000 RT-relevant cases", labelpad=1.5)
+    ax.set_xlabel("Regional selected-site case growth, 2024-2050 (%)")
+    ax.set_ylabel("MV units per 1000 selected-site cases, 2050", labelpad=1.5)
     ax.text(
         0.98,
         0.03,
-        "Labels: high-growth/low-resource\ncountries / matched countries",
+        "Labels: acceleration-risk countries /\nmatched countries; axes use aggregate ratios",
         transform=ax.transAxes,
         ha="right",
         va="bottom",
@@ -474,7 +492,7 @@ def make_figure() -> dict[str, Path]:
     metrics = log["metrics"]
     growth_q75 = float(metrics["growth_q75"])
     resource_q25 = float(metrics["resource_q25"])
-    highlow_count = int(metrics["high_growth_low_resource_count"])
+    highlow_count = int(metrics["acceleration_risk_count"])
     complete_cases = int(metrics["complete_case_records"])
 
     cmap = LinearSegmentedColormap.from_list(
@@ -495,8 +513,8 @@ def make_figure() -> dict[str, Path]:
     annotate_top_map_countries(ax_a, df, centroids)
     ax_a.text(
         0.030,
-        0.135,
-        f"{complete_cases} complete-case countries\n{highlow_count} high-growth/low-resource countries",
+        0.160,
+        f"{complete_cases} matched countries\n{highlow_count} acceleration-risk countries",
         transform=ax_a.transAxes,
         fontsize=5.8,
         color=PALETTE["black"],
@@ -510,16 +528,16 @@ def make_figure() -> dict[str, Path]:
     sm.set_array([])
     cax = ax_a.inset_axes([0.335, -0.105, 0.330, 0.034])
     cbar = fig.colorbar(sm, cax=cax, orientation="horizontal", ticks=[0.01, 0.05, 0.1, 0.5, 1, 5])
-    cbar.set_label("MV units per 1000 projected RT-relevant cases, 2050", fontsize=5.6, labelpad=1.0)
+    cbar.set_label("MV units per 1000 selected-site cases, 2050", fontsize=5.6, labelpad=1.0)
     cbar.ax.set_xticklabels(["0.01", "0.05", "0.1", "0.5", "1", "5"])
     cbar.ax.tick_params(labelsize=5.2, length=1.8, pad=1.0)
     cbar.outline.set_linewidth(0.45)
 
     legend_handles = [
-        Patch(facecolor=(1, 1, 1, 0), edgecolor=PALETTE["signal_dark"], linewidth=0.9, label="High growth + low resource"),
+        Patch(facecolor=(1, 1, 1, 0), edgecolor=PALETTE["signal_dark"], linewidth=0.9, label="High growth + lower-quartile\nunit density"),
         Patch(facecolor=PALETTE["missing"], edgecolor=PALETTE["neutral_mid"], hatch="////", linewidth=0.45, label="DIRAC missing"),
     ]
-    ax_a.legend(handles=legend_handles, loc="lower left", bbox_to_anchor=(0.030, 0.030), borderpad=0.2, handlelength=1.2)
+    ax_a.legend(handles=legend_handles, loc="lower left", bbox_to_anchor=(0.030, 0.020), borderpad=0.2, handlelength=1.2)
 
     add_panel_label(ax_b, "b", -0.16, 1.015)
     draw_panel_b(ax_b, df, resource_q25)
@@ -547,17 +565,17 @@ def make_figure() -> dict[str, Path]:
         "who_region",
         "income_label",
         "dirac_matched",
-        "rt_mismatch_rank",
-        "rt_mismatch_score",
+        "unit_pressure_rank",
+        "selected_site_cases_per_mv_unit_2050",
         "high_growth_q75",
-        "low_resource_q25",
-        "high_growth_low_resource",
-        "rt_relevant_cases_2024",
-        "rt_relevant_cases_2050",
-        "rt_relevant_absolute_case_increase_2050",
-        "rt_relevant_relative_case_growth_2050",
+        "lower_quartile_unit_density",
+        "acceleration_risk",
+        "selected_site_cases_2024",
+        "selected_site_cases_2050",
+        "selected_site_case_increase_2050",
+        "selected_site_relative_case_growth_2050",
         "mv_therapy_units",
-        "mv_units_per_1000_rt_relevant_cases_2050",
+        "mv_units_per_1000_selected_site_cases_2050",
     ]
     df[country_source_cols].to_csv(
         COUNTRY_SOURCE_DATA,
@@ -583,7 +601,7 @@ def write_design_note(
     lines = [
         "# Radiotherapy Resource Mismatch Figure Contract",
         "",
-        "Core conclusion: Countries with rapidly growing radiotherapy-relevant cancer burden are concentrated in settings with sparse current megavoltage radiotherapy capacity.",
+        "Core conclusion: Countries with rapidly growing selected cancer-site incidence are concentrated in settings with sparse current megavoltage unit density.",
         "Figure archetype: asymmetric mixed-modality figure.",
         "Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG.",
         "Backend: Python/matplotlib only.",
@@ -591,27 +609,27 @@ def write_design_note(
         "",
         "## Panel Map",
         "",
-        "- a: Hero world map; fill encodes MV units per 1000 projected 2050 RT-relevant cancer cases, red outline marks countries crossing both high-growth and low-resource thresholds, hatch marks DIRAC-missing observations.",
-        "- b: Top-scoring country profile plot; y-axis is mismatch rank, x-axis is MV density, point area encodes projected 2050 RT-relevant cases, right text gives relative growth and current MV units.",
-        "- c: WHO-region burden-resource quadrant; x-axis is aggregate relative RT-relevant case growth, y-axis is aggregate MV density, bubble area encodes projected 2050 cases, labels give high-growth/low-resource count over matched countries.",
+        "- a: Hero world map; fill encodes MV units per 1000 projected 2050 selected-site cancer cases, red outline marks countries crossing both high-growth and lower-quartile unit-density thresholds, hatch marks DIRAC-missing observations.",
+        "- b: Country pressure profile plot; y-axis is selected-site cases per MV-unit pressure rank, x-axis is MV density, point area encodes projected 2050 selected-site cases, right text gives relative growth and current MV units.",
+        "- c: WHO-region burden-resource quadrant; x-axis is aggregate relative selected-site case growth, y-axis is aggregate MV density, bubble area encodes projected 2050 selected-site cases, labels give acceleration-risk count over matched countries.",
         "",
         "## Evidence Hierarchy",
         "",
-        "- Hero evidence: geographic co-localisation of projected RT-relevant burden and low current MV capacity.",
-        "- Validation evidence: ranked country profiles show the same countries carry low MV density and large projected growth.",
-        "- Regional synthesis: AFRO is visually separated by high relative growth, low MV density, and the largest count of high-growth/low-resource countries.",
+        "- Hero evidence: geographic co-localisation of projected selected-site incidence growth and low current MV-unit density.",
+        "- Validation evidence: ranked country profiles show countries with the highest selected-site cases per current MV unit.",
+        "- Regional synthesis: AFRO is visually separated by high relative growth, low MV density, and the largest count of acceleration-risk countries.",
         "",
         "## Thresholds and n",
         "",
         f"- Complete-case countries: {complete_cases}.",
-        f"- High-growth threshold: relative RT-relevant case growth q75 = {growth_q75:.4f}.",
-        f"- Low-resource threshold: MV units per 1000 projected 2050 RT-relevant cases q25 = {resource_q25:.4f}.",
-        f"- High-growth/low-resource countries: {highlow_count}.",
+        f"- High-growth threshold: relative selected-site case growth q75 = {growth_q75:.4f}.",
+        f"- Lower-quartile unit-density threshold: MV units per 1000 projected 2050 selected-site cases q25 = {resource_q25:.4f}.",
+        f"- Acceleration-risk countries: {highlow_count}.",
         "",
         "## Reviewer-Risk Notes",
         "",
         "- DIRAC-absent countries are treated as missing resource observations, not zero-capacity countries.",
-        "- The figure visualises radiotherapy-relevant incident cancers, not modelled radiotherapy demand or utilisation.",
+        "- The figure visualises selected cancer-site incidence, not modelled radiotherapy demand or utilisation.",
         "- MV units are current DIRAC country-table counts and are not projected to 2050.",
         "- Panel c uses complete-case regional aggregation for resource denominators.",
         "",

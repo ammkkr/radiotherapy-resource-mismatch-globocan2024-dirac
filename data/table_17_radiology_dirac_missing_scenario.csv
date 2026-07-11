@@ -1,0 +1,4 @@
+Scenario,Country denominator,Acceleration-risk countries,Interpretation
+Primary complete-case screen,150,23,Countries with matched DIRAC resource data only.
+DIRAC missing treated as unknown,186,23,Primary analysis; 36 countries have no resource classification.
+DIRAC missing provisionally treated as zero MV units,186,40,Fixed primary growth threshold; adds high-growth countries with missing DIRAC matches.

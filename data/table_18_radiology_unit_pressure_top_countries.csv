@@ -1,0 +1,21 @@
+Pressure rank,Country,ISO3,WHO region,Acceleration-risk,2050 cases,MV units,2050 cases/MV unit,MV units/1000 cases,"Growth, %"
+1,Democratic Republic of the Congo,COD,AFRO,Yes,"91,916",1,"91,916",0.011,139
+2,Yemen,YEM,EMRO,Yes,"33,953",1,"33,953",0.029,184
+3,Ethiopia,ETH,AFRO,Yes,"99,613",3,"33,204",0.030,141
+4,Zimbabwe,ZWE,AFRO,No,"30,640",1,"30,640",0.033,105
+5,Mozambique,MOZ,AFRO,Yes,"28,686",1,"28,686",0.035,146
+6,Democratic People's Republic of Korea,PRK,SEARO,No,"44,118",2,"22,059",0.045,34
+7,Niger,NER,AFRO,Yes,"19,785",1,"19,785",0.051,167
+8,Malawi,MWI,AFRO,Yes,"34,319",2,"17,160",0.058,167
+9,Angola,AGO,AFRO,Yes,"36,804",3,"12,268",0.082,144
+10,Nigeria,NGA,AFRO,No,"202,738",17,"11,926",0.084,109
+11,Cameroon,CMR,AFRO,Yes,"22,906",2,"11,453",0.087,161
+12,Zambia,ZMB,AFRO,Yes,"28,900",3,"9,633",0.104,203
+13,Uganda,UGA,AFRO,Yes,"46,945",5,"9,389",0.107,203
+14,Mali,MLI,AFRO,Yes,"18,269",2,"9,134",0.109,154
+15,Burkina Faso,BFA,AFRO,Yes,"17,974",2,"8,987",0.111,150
+16,Madagascar,MDG,AFRO,Yes,"25,555",3,"8,518",0.117,131
+17,Papua New Guinea,PNG,WPRO,Yes,"16,837",2,"8,418",0.119,131
+18,Togo,TGO,AFRO,No,"8,394",1,"8,394",0.119,117
+19,Kyrgyzstan,KGZ,EURO,No,"7,923",1,"7,923",0.126,92
+20,Sudan,SDN,EMRO,Yes,"46,553",6,"7,759",0.129,134

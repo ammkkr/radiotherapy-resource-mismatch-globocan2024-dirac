@@ -1,0 +1,24 @@
+Country,WHO region,Income group,2024 cases,2050 cases,"Growth, %",Increase,MV units,2050 cases/MV unit,DIRAC update
+Democratic Republic of the Congo,AFRO,Low income,"38,447","91,916",139,"53,469",1,"91,916",2021
+Yemen,EMRO,Low income,"11,974","33,953",184,"21,979",1,"33,953",2018
+Ethiopia,AFRO,Low income,"41,349","99,613",141,"58,264",3,"33,204",2022
+Mozambique,AFRO,Low income,"11,653","28,686",146,"17,033",1,"28,686",2025
+Niger,AFRO,Low income,"7,410","19,785",167,"12,375",1,"19,785",2021
+Malawi,AFRO,Low income,"12,864","34,319",167,"21,455",2,"17,160",2026
+Angola,AFRO,Lower middle income,"15,108","36,804",144,"21,696",3,"12,268",2023
+Cameroon,AFRO,Lower middle income,"8,784","22,906",161,"14,122",2,"11,453",2023
+Zambia,AFRO,Lower middle income,"9,543","28,900",203,"19,357",3,"9,633",2019
+Uganda,AFRO,Low income,"15,507","46,945",203,"31,438",5,"9,389",2026
+Mali,AFRO,Low income,"7,181","18,269",154,"11,088",2,"9,134",2026
+Burkina Faso,AFRO,Low income,"7,191","17,974",150,"10,783",2,"8,987",2025
+Madagascar,AFRO,Low income,"11,058","25,555",131,"14,497",3,"8,518",2022
+Papua New Guinea,WPRO,Lower middle income,"7,299","16,837",131,"9,538",2,"8,418",2024
+Sudan,EMRO,Low income,"19,880","46,553",134,"26,673",6,"7,759",2022
+Rwanda,AFRO,Low income,"6,598","15,430",134,"8,832",2,"7,715",2023
+Cote d'Ivoire,AFRO,Lower middle income,"11,712","28,574",144,"16,862",4,"7,144",2026
+Ghana,AFRO,Lower middle income,"15,246","34,299",125,"19,053",6,"5,716",2026
+Senegal,AFRO,Lower middle income,"7,178","17,579",145,"10,401",4,"4,395",2024
+Tanzania,AFRO,Lower middle income,"16,916","44,604",164,"27,688",11,"4,055",2026
+Kenya,AFRO,Lower middle income,"21,375","51,868",143,"30,493",18,"2,882",2026
+Guatemala,PAHO,Upper middle income,"9,266","22,823",146,"13,557",8,"2,853",2026
+Syrian Arab Republic,EMRO,Low income,"14,229","35,772",151,"21,543",13,"2,752",2023

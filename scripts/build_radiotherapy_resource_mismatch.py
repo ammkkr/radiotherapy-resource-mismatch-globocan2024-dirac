@@ -1,4 +1,4 @@
-"""Build GLOBOCAN 2024 / DIRAC radiotherapy resource mismatch dataset."""
+"""Build GCO Cancer Tomorrow / DIRAC radiotherapy resource-density dataset."""
 
 from __future__ import annotations
 
@@ -23,20 +23,20 @@ GCO_PREDICTIONS = DATA_INTERIM / "gco_cancer_tomorrow_2024_predictions_long.csv"
 DIRAC_RESOURCES = DATA_INTERIM / "dirac_country_resources.csv"
 
 RT_SITE_RULES = [
-    {"cancer_code": "1", "label": "Lip, oral cavity", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
-    {"cancer_code": "3", "label": "Oropharynx", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
-    {"cancer_code": "4", "label": "Nasopharynx", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
-    {"cancer_code": "5", "label": "Hypopharynx", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
-    {"cancer_code": "6", "label": "Oesophagus", "rt_relevance": "moderate_high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy or chemoradiotherapy is commonly part of treatment in selected settings."},
-    {"cancer_code": "9", "label": "Rectum", "rt_relevance": "moderate_high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Rectal cancer is separated from grouped colorectum where available."},
-    {"cancer_code": "14", "label": "Larynx", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
-    {"cancer_code": "15", "label": "Trachea, bronchus and lung", "rt_relevance": "moderate", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy is used across curative and palliative lung cancer pathways."},
-    {"cancer_code": "20", "label": "Breast", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy is a core component after breast-conserving surgery and in selected postmastectomy settings."},
-    {"cancer_code": "23", "label": "Cervix uteri", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy and brachytherapy are central to treatment of locally advanced disease."},
-    {"cancer_code": "24", "label": "Corpus uteri", "rt_relevance": "moderate", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy is used in selected adjuvant and advanced settings."},
-    {"cancer_code": "27", "label": "Prostate", "rt_relevance": "moderate_high", "rt_weight": "1", "main_rt_set": "1", "rationale": "External-beam radiotherapy and brachytherapy are common prostate cancer treatments."},
-    {"cancer_code": "30", "label": "Bladder", "rt_relevance": "moderate", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy is used in bladder-preserving and palliative settings."},
-    {"cancer_code": "31", "label": "Brain, central nervous system", "rt_relevance": "high", "rt_weight": "1", "main_rt_set": "1", "rationale": "Radiotherapy is central for many primary CNS tumour pathways."},
+    {"cancer_code": "1", "label": "Lip, oral cavity", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
+    {"cancer_code": "3", "label": "Oropharynx", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
+    {"cancer_code": "4", "label": "Nasopharynx", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
+    {"cancer_code": "5", "label": "Hypopharynx", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
+    {"cancer_code": "6", "label": "Oesophagus", "selected_site_relevance": "moderate_high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy or chemoradiotherapy is commonly part of treatment in selected settings."},
+    {"cancer_code": "9", "label": "Rectum", "selected_site_relevance": "moderate_high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Rectal cancer is separated from grouped colorectum where available."},
+    {"cancer_code": "14", "label": "Larynx", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Head and neck cancer site with common radiotherapy use."},
+    {"cancer_code": "15", "label": "Trachea, bronchus and lung", "selected_site_relevance": "moderate", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy is used across curative and palliative lung cancer pathways."},
+    {"cancer_code": "20", "label": "Breast", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy is a core component after breast-conserving surgery and in selected postmastectomy settings."},
+    {"cancer_code": "23", "label": "Cervix uteri", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy and brachytherapy are central to treatment of locally advanced disease."},
+    {"cancer_code": "24", "label": "Corpus uteri", "selected_site_relevance": "moderate", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy is used in selected adjuvant and advanced settings."},
+    {"cancer_code": "27", "label": "Prostate", "selected_site_relevance": "moderate_high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "External-beam radiotherapy and brachytherapy are common prostate cancer treatments."},
+    {"cancer_code": "30", "label": "Bladder", "selected_site_relevance": "moderate", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy is used in bladder-preserving and palliative settings."},
+    {"cancer_code": "31", "label": "Brain, central nervous system", "selected_site_relevance": "high", "selected_site_weight": "1", "included_selected_site_set": "1", "rationale": "Radiotherapy is central for many primary CNS tumour pathways."},
 ]
 
 ALL_CANCER_EXCL_NMSC_CODE = "40"
@@ -102,16 +102,16 @@ def percentile_ranks(values_by_key: dict[str, float], reverse: bool = False) -> 
 
 
 def write_site_rules() -> None:
-    path = PROTOCOL_DIR / "radiotherapy_relevant_site_rules.csv"
+    path = PROTOCOL_DIR / "selected_cancer_site_rules.csv"
     write_csv(
         path,
         RT_SITE_RULES,
-        ["cancer_code", "label", "rt_relevance", "rt_weight", "main_rt_set", "rationale"],
+        ["cancer_code", "label", "selected_site_relevance", "selected_site_weight", "included_selected_site_set", "rationale"],
     )
 
 
 def build_burden_tables(predictions: list[dict[str, str]]) -> tuple[dict[str, dict[str, Any]], dict[str, dict[str, Any]]]:
-    rt_codes = {row["cancer_code"] for row in RT_SITE_RULES if row["main_rt_set"] == "1"}
+    rt_codes = {row["cancer_code"] for row in RT_SITE_RULES if row["included_selected_site_set"] == "1"}
     country_meta: dict[str, dict[str, Any]] = {}
     rt_incidence: dict[tuple[str, str], float] = defaultdict(float)
     rt_mortality: dict[tuple[str, str], float] = defaultdict(float)
@@ -175,13 +175,13 @@ def build_burden_tables(predictions: list[dict[str, str]]) -> tuple[dict[str, di
             rec[f"all_cancer_deaths_{year}"] = all_mortality.get((iso3, year), float("nan"))
             rec[f"population_{year}"] = population.get((iso3, year), float("nan"))
 
-        rec["rt_relevant_absolute_case_increase_2050"] = rec["rt_relevant_cases_2050"] - rec["rt_relevant_cases_2024"]
-        rec["rt_relevant_relative_case_growth_2050"] = safe_div(
-            rec["rt_relevant_absolute_case_increase_2050"], rec["rt_relevant_cases_2024"]
+        rec["selected_site_case_increase_2050"] = rec["selected_site_cases_2050"] - rec["selected_site_cases_2024"]
+        rec["selected_site_relative_case_growth_2050"] = safe_div(
+            rec["selected_site_case_increase_2050"], rec["selected_site_cases_2024"]
         )
-        rec["rt_relevant_absolute_death_increase_2050"] = rec["rt_relevant_deaths_2050"] - rec["rt_relevant_deaths_2024"]
-        rec["rt_relevant_relative_death_growth_2050"] = safe_div(
-            rec["rt_relevant_absolute_death_increase_2050"], rec["rt_relevant_deaths_2024"]
+        rec["selected_site_death_increase_2050"] = rec["selected_site_deaths_2050"] - rec["selected_site_deaths_2024"]
+        rec["selected_site_relative_death_growth_2050"] = safe_div(
+            rec["selected_site_death_increase_2050"], rec["selected_site_deaths_2024"]
         )
         rec["all_cancer_absolute_case_increase_2050"] = rec["all_cancer_cases_2050"] - rec["all_cancer_cases_2024"]
         rec["all_cancer_relative_case_growth_2050"] = safe_div(
@@ -210,7 +210,7 @@ def build_site_summary(predictions: list[dict[str, str]], rt_codes: set[str]) ->
             {
                 "cancer_code": cancer_code,
                 "cancer_label": row.get("cancer_label", ""),
-                "included_main_rt_set": "1",
+                "included_included_selected_site_set": "1",
             },
         )
         rec[f"world_cases_{row.get('year')}"] = to_float(row.get("predicted_count"))
@@ -255,15 +255,16 @@ def merge_with_dirac(burden: dict[str, dict[str, Any]], dirac: list[dict[str, st
         mv_units = to_float(rec.get("mv_therapy_units"))
         centres = to_float(rec.get("rt_centres_with_rt"))
         brachy = to_float(rec.get("brachytherapy_units"))
-        rt_cases_2050 = to_float(rec.get("rt_relevant_cases_2050"))
+        rt_cases_2050 = to_float(rec.get("selected_site_cases_2050"))
         all_cases_2050 = to_float(rec.get("all_cancer_cases_2050"))
         pop_2024 = to_float(rec.get("population_2024"))
 
-        rec["mv_units_per_1000_rt_relevant_cases_2050"] = safe_div(mv_units * 1000, rt_cases_2050)
-        rec["rt_centres_per_10000_rt_relevant_cases_2050"] = safe_div(centres * 10000, rt_cases_2050)
+        rec["mv_units_per_1000_selected_site_cases_2050"] = safe_div(mv_units * 1000, rt_cases_2050)
+        rec["selected_site_cases_per_mv_unit_2050"] = safe_div(rt_cases_2050, mv_units)
+        rec["rt_centres_per_10000_selected_site_cases_2050"] = safe_div(centres * 10000, rt_cases_2050)
         rec["mv_units_per_1000_all_cancer_cases_2050"] = safe_div(mv_units * 1000, all_cases_2050)
         rec["mv_units_per_million_population_2024"] = safe_div(mv_units * 1_000_000, pop_2024)
-        rec["brachy_units_per_1000_rt_relevant_cases_2050"] = safe_div(brachy * 1000, rt_cases_2050)
+        rec["brachy_units_per_1000_selected_site_cases_2050"] = safe_div(brachy * 1000, rt_cases_2050)
         records.append(rec)
 
     dirac_unmatched = sorted(set(dirac_by_iso) - set(burden))
@@ -286,54 +287,47 @@ def add_mismatch_metrics(records: list[dict[str, Any]]) -> dict[str, Any]:
         row
         for row in records
         if row["dirac_matched"] == "1"
-        and not math.isnan(to_float(row.get("rt_relevant_relative_case_growth_2050")))
-        and not math.isnan(to_float(row.get("rt_relevant_absolute_case_increase_2050")))
-        and not math.isnan(to_float(row.get("mv_units_per_1000_rt_relevant_cases_2050")))
+        and not math.isnan(to_float(row.get("selected_site_relative_case_growth_2050")))
+        and not math.isnan(to_float(row.get("selected_site_case_increase_2050")))
+        and not math.isnan(to_float(row.get("mv_units_per_1000_selected_site_cases_2050")))
     ]
-    growth_values = [to_float(row["rt_relevant_relative_case_growth_2050"]) for row in complete]
-    resource_values = [to_float(row["mv_units_per_1000_rt_relevant_cases_2050"]) for row in complete]
+    growth_values = [to_float(row["selected_site_relative_case_growth_2050"]) for row in complete]
+    resource_values = [to_float(row["mv_units_per_1000_selected_site_cases_2050"]) for row in complete]
     growth_q75 = quantile(growth_values, 0.75)
     resource_q25 = quantile(resource_values, 0.25)
 
-    rel_growth_by_iso = {row["country_iso3"]: to_float(row["rt_relevant_relative_case_growth_2050"]) for row in complete}
-    abs_growth_by_iso = {row["country_iso3"]: to_float(row["rt_relevant_absolute_case_increase_2050"]) for row in complete}
-    resource_by_iso = {row["country_iso3"]: to_float(row["mv_units_per_1000_rt_relevant_cases_2050"]) for row in complete}
-    rel_pct = percentile_ranks(rel_growth_by_iso)
-    abs_pct = percentile_ranks(abs_growth_by_iso)
-    resource_pct = percentile_ranks(resource_by_iso)
-
-    total_increment = sum(to_float(row["rt_relevant_absolute_case_increase_2050"]) for row in records if not math.isnan(to_float(row["rt_relevant_absolute_case_increase_2050"])))
+    total_increment = sum(to_float(row["selected_site_case_increase_2050"]) for row in records if not math.isnan(to_float(row["selected_site_case_increase_2050"])))
 
     for row in records:
-        iso3 = row["country_iso3"]
-        rel_growth = to_float(row.get("rt_relevant_relative_case_growth_2050"))
-        resource = to_float(row.get("mv_units_per_1000_rt_relevant_cases_2050"))
-        abs_increase = to_float(row.get("rt_relevant_absolute_case_increase_2050"))
+        rel_growth = to_float(row.get("selected_site_relative_case_growth_2050"))
+        resource = to_float(row.get("mv_units_per_1000_selected_site_cases_2050"))
+        abs_increase = to_float(row.get("selected_site_case_increase_2050"))
         row["high_growth_q75"] = "1" if not math.isnan(rel_growth) and rel_growth >= growth_q75 else "0"
-        row["low_resource_q25"] = "1" if not math.isnan(resource) and resource <= resource_q25 else "0"
-        row["high_growth_low_resource"] = "1" if row["high_growth_q75"] == "1" and row["low_resource_q25"] == "1" else "0"
-        row["share_global_rt_relevant_case_increment"] = safe_div(abs_increase, total_increment)
-        if iso3 in rel_pct and iso3 in abs_pct and iso3 in resource_pct:
-            row["rt_mismatch_score"] = rel_pct[iso3] + abs_pct[iso3] + (1 - resource_pct[iso3])
-        else:
-            row["rt_mismatch_score"] = float("nan")
+        row["lower_quartile_unit_density"] = "1" if not math.isnan(resource) and resource <= resource_q25 else "0"
+        row["acceleration_risk"] = "1" if row["high_growth_q75"] == "1" and row["lower_quartile_unit_density"] == "1" else "0"
+        row["share_global_selected_site_case_increment"] = safe_div(abs_increase, total_increment)
 
-    ranked = sorted(
-        [row for row in records if not math.isnan(to_float(row.get("rt_mismatch_score")))],
-        key=lambda row: to_float(row["rt_mismatch_score"]),
+    pressure_ranked = sorted(
+        [
+            row
+            for row in records
+            if row["dirac_matched"] == "1"
+            and not math.isnan(to_float(row.get("selected_site_cases_per_mv_unit_2050")))
+        ],
+        key=lambda row: to_float(row["selected_site_cases_per_mv_unit_2050"]),
         reverse=True,
     )
-    for idx, row in enumerate(ranked, start=1):
-        row["rt_mismatch_rank"] = idx
+    for idx, row in enumerate(pressure_ranked, start=1):
+        row["unit_pressure_rank"] = idx
     for row in records:
-        row.setdefault("rt_mismatch_rank", "")
+        row.setdefault("unit_pressure_rank", "")
 
     return {
         "complete_case_records": len(complete),
         "growth_q75": growth_q75,
         "resource_q25": resource_q25,
         "global_rt_relevant_case_increment": total_increment,
-        "high_growth_low_resource_count": sum(row["high_growth_low_resource"] == "1" for row in records),
+        "acceleration_risk_count": sum(row["acceleration_risk"] == "1" for row in records),
     }
 
 
@@ -344,15 +338,15 @@ def region_summary(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
     for region, rows in sorted(grouped.items()):
         matched = [row for row in rows if row["dirac_matched"] == "1"]
-        mismatch = [row for row in rows if row["high_growth_low_resource"] == "1"]
+        mismatch = [row for row in rows if row["acceleration_risk"] == "1"]
         out.append(
             {
                 "who_region": region,
                 "gco_countries": len(rows),
                 "dirac_matched_countries": len(matched),
-                "high_growth_low_resource_countries": len(mismatch),
-                "rt_relevant_cases_2050": sum(to_float(row["rt_relevant_cases_2050"]) for row in rows if not math.isnan(to_float(row["rt_relevant_cases_2050"]))),
-                "rt_relevant_case_increment_2050": sum(to_float(row["rt_relevant_absolute_case_increase_2050"]) for row in rows if not math.isnan(to_float(row["rt_relevant_absolute_case_increase_2050"]))),
+                "acceleration_risk_countries": len(mismatch),
+                "selected_site_cases_2050": sum(to_float(row["selected_site_cases_2050"]) for row in rows if not math.isnan(to_float(row["selected_site_cases_2050"]))),
+                "selected_site_case_increment_2050": sum(to_float(row["selected_site_case_increase_2050"]) for row in rows if not math.isnan(to_float(row["selected_site_case_increase_2050"]))),
                 "mv_therapy_units": sum(to_float(row["mv_therapy_units"]) for row in matched if not math.isnan(to_float(row["mv_therapy_units"]))),
             }
         )
@@ -367,7 +361,7 @@ def write_report(summary: dict[str, Any], top_rows: list[dict[str, Any]], paths:
         "",
         "## Inputs",
         "",
-        f"- GLOBOCAN Cancer Tomorrow: `{GCO_PREDICTIONS.relative_to(PROJECT_ROOT)}`",
+        f"- GCO Cancer Tomorrow API data version 2024: `{GCO_PREDICTIONS.relative_to(PROJECT_ROOT)}`",
         f"- DIRAC country resources: `{DIRAC_RESOURCES.relative_to(PROJECT_ROOT)}`",
         "",
         "## Merge Summary",
@@ -378,35 +372,35 @@ def write_report(summary: dict[str, Any], top_rows: list[dict[str, Any]], paths:
         f"- GCO records without DIRAC match: {summary['merge']['gco_unmatched_count']}",
         f"- DIRAC records without GCO match: {summary['merge']['dirac_unmatched_count']}",
         "",
-        "## Mismatch Thresholds",
+        "## Acceleration-Risk Thresholds",
         "",
         f"- Complete-case records: {summary['metrics']['complete_case_records']}",
-        f"- High-growth threshold, relative RT-relevant case growth q75: {summary['metrics']['growth_q75']:.4f}",
-        f"- Low-resource threshold, MV units per 1000 RT-relevant 2050 cases q25: {summary['metrics']['resource_q25']:.4f}",
-        f"- High-growth/low-resource countries: {summary['metrics']['high_growth_low_resource_count']}",
+        f"- High-growth threshold, relative selected-site case growth q75: {summary['metrics']['growth_q75']:.4f}",
+        f"- Lower-quartile unit-density threshold, MV units per 1000 selected-site 2050 cases q25: {summary['metrics']['resource_q25']:.4f}",
+        f"- Acceleration-risk countries: {summary['metrics']['acceleration_risk_count']}",
         "",
         "## Interpretation Notes",
         "",
         "- Countries absent from the DIRAC country table are treated as missing resource observations, not as zero-resource countries.",
         "- The primary mismatch analysis is therefore a complete-case comparison among GLOBOCAN country records with a DIRAC ISO3 match.",
         "",
-        "## Top 10 Countries by RT Mismatch Score",
+        "## Top 10 Countries by Selected-Site Cases per MV Unit",
         "",
-        "| Rank | Country | ISO3 | WHO region | Income | RT cases 2050 | Relative growth | MV units | MV units per 1000 RT cases |",
+        "| Rank | Country | ISO3 | WHO region | Income | Selected-site cases 2050 | Relative growth | MV units | Selected-site cases per MV unit |",
         "|---:|---|---|---|---|---:|---:|---:|---:|",
     ]
     for row in top_rows[:10]:
         lines.append(
-            "| {rank} | {country} | {iso3} | {region} | {income} | {cases:.0f} | {growth:.3f} | {units:.0f} | {density:.3f} |".format(
-                rank=row.get("rt_mismatch_rank", ""),
+                "| {rank} | {country} | {iso3} | {region} | {income} | {cases:.0f} | {growth:.3f} | {units:.0f} | {density:.0f} |".format(
+                rank=row.get("unit_pressure_rank", ""),
                 country=row.get("gco_country", ""),
                 iso3=row.get("country_iso3", ""),
                 region=row.get("who_region", ""),
                 income=row.get("income_label", ""),
-                cases=to_float(row.get("rt_relevant_cases_2050")),
-                growth=to_float(row.get("rt_relevant_relative_case_growth_2050")),
+                cases=to_float(row.get("selected_site_cases_2050")),
+                growth=to_float(row.get("selected_site_relative_case_growth_2050")),
                 units=to_float(row.get("mv_therapy_units")),
-                density=to_float(row.get("mv_units_per_1000_rt_relevant_cases_2050")),
+                density=to_float(row.get("selected_site_cases_per_mv_unit_2050")),
             )
         )
     lines.extend(
@@ -434,8 +428,8 @@ def main() -> int:
     metrics = add_mismatch_metrics(records)
 
     records_sorted = sorted(
-        [row for row in records if not math.isnan(to_float(row.get("rt_mismatch_score")))],
-        key=lambda row: to_float(row.get("rt_mismatch_score")),
+        [row for row in records if not math.isnan(to_float(row.get("selected_site_cases_per_mv_unit_2050")))],
+        key=lambda row: to_float(row.get("selected_site_cases_per_mv_unit_2050")),
         reverse=True,
     )
     top_rows = records_sorted
@@ -443,30 +437,30 @@ def main() -> int:
     site_rows = sorted(site_summary.values(), key=lambda row: to_float(row["world_cases_2050"]), reverse=True)
 
     output_main = DATA_PROCESSED / "radiotherapy_resource_mismatch_country_2024_2050.csv"
-    output_top = TABLE_DIR / "table_09_radiotherapy_mismatch_top_countries.csv"
-    output_region = TABLE_DIR / "table_10_radiotherapy_mismatch_region_summary.csv"
-    output_site = TABLE_DIR / "table_11_radiotherapy_relevant_site_burden.csv"
+    output_top = TABLE_DIR / "table_09_unit_pressure_top_countries.csv"
+    output_region = TABLE_DIR / "table_10_region_summary.csv"
+    output_site = TABLE_DIR / "table_11_selected_site_burden.csv"
     output_log = LOG_DIR / "radiotherapy_resource_mismatch_build_log.json"
 
     write_csv(output_main, records)
     top_fields = [
-        "rt_mismatch_rank",
+        "unit_pressure_rank",
         "country_iso3",
         "gco_country",
         "who_region",
         "hdi_label",
         "income_label",
-        "rt_relevant_cases_2024",
-        "rt_relevant_cases_2050",
-        "rt_relevant_absolute_case_increase_2050",
-        "rt_relevant_relative_case_growth_2050",
+        "selected_site_cases_2024",
+        "selected_site_cases_2050",
+        "selected_site_case_increase_2050",
+        "selected_site_relative_case_growth_2050",
         "rt_centres_with_rt",
         "mv_therapy_units",
         "brachytherapy_units",
-        "mv_units_per_1000_rt_relevant_cases_2050",
-        "rt_centres_per_10000_rt_relevant_cases_2050",
-        "high_growth_low_resource",
-        "rt_mismatch_score",
+        "selected_site_cases_per_mv_unit_2050",
+        "mv_units_per_1000_selected_site_cases_2050",
+        "rt_centres_per_10000_selected_site_cases_2050",
+        "acceleration_risk",
         "dirac_last_update_year",
     ]
     write_csv(output_top, top_rows[:30], top_fields)
@@ -484,7 +478,7 @@ def main() -> int:
             "top_countries_table": str(output_top),
             "region_summary_table": str(output_region),
             "site_burden_table": str(output_site),
-            "site_rules": str(PROTOCOL_DIR / "radiotherapy_relevant_site_rules.csv"),
+            "site_rules": str(PROTOCOL_DIR / "selected_cancer_site_rules.csv"),
         },
     }
     output_log.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -496,7 +490,7 @@ def main() -> int:
             "top countries": output_top,
             "region summary": output_region,
             "site burden": output_site,
-            "site rules": PROTOCOL_DIR / "radiotherapy_relevant_site_rules.csv",
+            "site rules": PROTOCOL_DIR / "selected_cancer_site_rules.csv",
             "build log": output_log,
         },
     )

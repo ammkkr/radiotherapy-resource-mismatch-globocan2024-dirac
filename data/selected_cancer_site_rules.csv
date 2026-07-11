@@ -1,4 +1,4 @@
-﻿cancer_code,label,rt_relevance,rt_weight,main_rt_set,rationale
+cancer_code,label,selected_site_relevance,selected_site_weight,included_selected_site_set,rationale
 1,"Lip, oral cavity",high,1,1,Head and neck cancer site with common radiotherapy use.
 3,Oropharynx,high,1,1,Head and neck cancer site with common radiotherapy use.
 4,Nasopharynx,high,1,1,Head and neck cancer site with common radiotherapy use.

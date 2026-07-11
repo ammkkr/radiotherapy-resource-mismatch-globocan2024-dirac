@@ -1,6 +1,6 @@
 {
   "script": "scripts/build_radiotherapy_resource_mismatch.py",
-  "run_finished_utc": "2026-07-08T22:14:04.232211+00:00",
+  "run_finished_utc": "2026-07-11T11:11:46.567751+00:00",
   "merge": {
     "gco_country_records": 186,
     "dirac_country_records": 155,
@@ -58,8 +58,8 @@
     "complete_case_records": 150,
     "growth_q75": 1.1921143269617445,
     "resource_q25": 0.5063462807568625,
-    "global_rt_relevant_case_increment": 5164327.0,
-    "high_growth_low_resource_count": 23
+    "acceleration_risk_count": 23,
+    "global_selected_site_case_increment": 5164327.0
   },
   "rt_site_codes": [
     "1",
@@ -79,10 +79,13 @@
   ],
   "outputs": {
     "main_country_dataset": "data/radiotherapy_resource_mismatch_country_2024_2050.csv",
-    "top_countries_table": "data/table_09_radiotherapy_mismatch_top_countries.csv",
-    "region_summary_table": "data/table_10_radiotherapy_mismatch_region_summary.csv",
-    "site_burden_table": "data/table_11_radiotherapy_relevant_site_burden.csv",
-    "site_rules": "data/radiotherapy_relevant_site_rules.csv"
+    "region_summary_table": "data/table_10_region_summary.csv",
+    "site_burden_table": "data/table_11_selected_site_burden.csv",
+    "site_rules": "data/selected_cancer_site_rules.csv",
+    "manuscript_table_1": "data/table_15_radiology_research_letter_country_characteristics.csv",
+    "dirac_match_comparison": "data/table_16_radiology_dirac_match_comparison.csv",
+    "dirac_missing_scenario": "data/table_17_radiology_dirac_missing_scenario.csv",
+    "unit_pressure_top_countries": "data/table_18_radiology_unit_pressure_top_countries.csv"
   },
-  "package_created_utc": "2026-07-10T14:17:54.840167+00:00"
+  "package_created_utc": "2026-07-11T11:16:17.488368+00:00"
 }

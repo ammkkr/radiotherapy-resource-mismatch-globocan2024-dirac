@@ -1,13 +1,15 @@
-# Radiotherapy Resource Mismatch Using GLOBOCAN 2024 and DIRAC
+# Cancer Tomorrow Projections and Current Radiotherapy MV-Unit Density
 
 This repository contains the derived data, figure source data, and analysis code
-for a country-level analysis linking GLOBOCAN 2024 cancer projections with IAEA
-DIRAC radiotherapy-resource data.
+for a country-level analysis linking IARC Global Cancer Observatory Cancer
+Tomorrow projections with IAEA DIRAC radiotherapy-resource data. The API data
+version used for the extracted Cancer Tomorrow projections was 2024.
 
 ## Study Question
 
-Which countries have both high projected growth in radiotherapy-relevant cancer
-burden by 2050 and low current megavoltage radiotherapy-resource density?
+Which countries with matched DIRAC data have both high projected growth in
+selected cancer-site incidence by 2050 and lower-quartile current megavoltage
+(MV) unit density?
 
 ## Repository Contents
 
@@ -15,8 +17,17 @@ burden by 2050 and low current megavoltage radiotherapy-resource density?
   analytic dataset.
 - `data/figure_1_country_source_data.csv` and
   `data/figure_1_region_source_data.csv`: source data for Figure 1.
-- `data/table_14_radiology_research_letter_robustness.csv`: source data for
-  Table 1 robustness analysis.
+- `data/table_15_radiology_research_letter_country_characteristics.csv`: source
+  data for the manuscript Table 1 country-characteristics table.
+- `data/table_14_radiology_research_letter_robustness.csv`,
+  `data/table_16_radiology_dirac_match_comparison.csv`, and
+  `data/table_17_radiology_dirac_missing_scenario.csv`: repository companion
+  analyses for sensitivity and DIRAC-missingness checks.
+- `data/selected_cancer_site_rules.csv` and
+  `data/table_11_selected_site_burden.csv`: selected-site definitions and
+  global selected-site burden summaries.
+- `data/table_18_radiology_unit_pressure_top_countries.csv`: source data for
+  Figure 1b country pressure profiles.
 - `figures/`: exported Figure 1 files in SVG, PDF, and PNG formats.
 - `scripts/`: analysis and figure-generation scripts.
 - `docs/qc_report.md`: merge and threshold quality-control summary.
@@ -41,13 +52,13 @@ country geometry, and sanitized build log.
 
 ## Rebuilding From Source
 
-The scripts document the full analytic workflow. Raw GLOBOCAN and DIRAC source
-exports are not redistributed in this repository. Users who want to rebuild the
+The scripts document the full analytic workflow. Raw GCO Cancer Tomorrow and
+DIRAC source exports are not redistributed in this repository. Users who want to rebuild the
 country-level dataset from raw inputs should obtain source data from the Global
 Cancer Observatory and IAEA DIRAC and place them in the expected project
 structure before running `scripts/build_radiotherapy_resource_mismatch.py`.
 
 ## Citation
 
-Please cite the manuscript associated with this repository, GLOBOCAN / Global
-Cancer Observatory, IAEA DIRAC, and Natural Earth as applicable.
+Please cite the manuscript associated with this repository, Global Cancer
+Observatory Cancer Tomorrow, IAEA DIRAC, and Natural Earth as applicable.
