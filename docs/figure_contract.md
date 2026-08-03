@@ -2,7 +2,7 @@
 
 Core conclusion: With a common 2025 baseline and fixed resource snapshot, the GCO version 2024 update retained 23 of 24 countries while missing resource observations widened regional uncertainty.
 Figure archetype: asymmetric mixed-modality figure.
-Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG/TIFF.
+Target journal/output: Short Communication main figure, double-column width, editable SVG/PDF plus high-resolution PNG.
 Backend: Python/matplotlib only.
 Final size: 7.65 x 6.18 inches before tight bounding-box export.
 
@@ -39,9 +39,8 @@ Final size: 7.65 x 6.18 inches before tight bounding-box export.
 
 ## Exported Files
 
-- svg: `results\figures\radiotherapy_resource_mismatch\figure_1_radiotherapy_resource_mismatch_3panel.svg`
-- pdf: `results\figures\radiotherapy_resource_mismatch\figure_1_radiotherapy_resource_mismatch_3panel.pdf`
-- png: `results\figures\radiotherapy_resource_mismatch\figure_1_radiotherapy_resource_mismatch_3panel.png`
-- tiff: `results\figures\radiotherapy_resource_mismatch\figure_1_radiotherapy_resource_mismatch_3panel.tiff`
-- country source data: `results/figures/radiotherapy_resource_mismatch/figure_1_radiotherapy_resource_mismatch_country_source_data.csv`
-- region source data: `results/figures/radiotherapy_resource_mismatch/figure_1_radiotherapy_resource_mismatch_region_source_data.csv`
+- svg: `figures\figure_1_radiotherapy_resource_mismatch_3panel.svg`
+- pdf: `figures\figure_1_radiotherapy_resource_mismatch_3panel.pdf`
+- png: `figures\figure_1_radiotherapy_resource_mismatch_3panel.png`
+- country source data: `data\figure_1_country_source_data.csv`
+- region source data: `data\figure_1_region_source_data.csv`

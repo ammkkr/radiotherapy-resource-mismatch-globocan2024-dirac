@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "input": "data\\radiotherapy_resource_mismatch_country_v6_sensitivity.csv",
+  "primary_metrics": {
+    "countries": 23,
+    "latest_reported_mv_units": 103,
+    "selected_site_cases_2024": 327768,
+    "selected_site_cases_2050": 819964,
+    "additional_selected_site_cases": 492196,
+    "median_growth_percent": 146.2,
+    "growth_iqr_percent": [
+      140.0,
+      162.2
+    ],
+    "median_2050_cases_per_mv_unit": 8987,
+    "cases_per_mv_unit_iqr": [
+      6430,
+      14714
+    ],
+    "cases_per_mv_unit_range": [
+      2752,
+      91916
+    ],
+    "support_all_7": 16,
+    "support_at_least_6_of_7": 20,
+    "support_distribution": {
+      "4": 1,
+      "5": 2,
+      "6": 4,
+      "7": 16
+    },
+    "matched_records_before_2023": 25,
+    "primary_records_before_2023": 7
+  },
+  "outputs": [
+    "data\\table_29_radiotherapy_oncology_stability.csv",
+    "data\\table_30_radiotherapy_oncology_primary_summary.csv"
+  ]
+}

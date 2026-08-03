@@ -580,11 +580,11 @@ def make_figure() -> dict[str, Path]:
     ]
     ax_a.legend(handles=legend_handles, loc="lower left", bbox_to_anchor=(0.030, 0.020), borderpad=0.2, handlelength=1.2)
 
-    add_panel_label(ax_b, "b", -0.16, 1.015)
+    add_panel_label(ax_b, "b", 0.005, 1.015)
     draw_panel_b(ax_b, df)
 
     region_df = load_region_bounds()
-    add_panel_label(ax_c, "c", -0.13, 1.015)
+    add_panel_label(ax_c, "c", 0.005, 1.015)
     draw_panel_c(ax_c, region_df)
 
     bolden_figure_text(fig)
@@ -660,12 +660,12 @@ def make_figure() -> dict[str, Path]:
     df[country_source_cols].to_csv(
         COUNTRY_SOURCE_DATA,
         index=False,
-        encoding="utf-8-sig",
+        encoding="utf-8",
     )
     region_df.to_csv(
         REGION_SOURCE_DATA,
         index=False,
-        encoding="utf-8-sig",
+        encoding="utf-8",
     )
     write_design_note(
         paths,
@@ -693,7 +693,7 @@ def write_design_note(
         "",
         "Core conclusion: With a common 2025 baseline and fixed resource snapshot, the GCO version 2024 update retained 23 of 24 countries while missing resource observations widened regional uncertainty.",
         "Figure archetype: asymmetric mixed-modality figure.",
-        "Target journal/output: Research Letter main figure, double-column width, editable SVG/PDF plus high-resolution PNG.",
+        "Target journal/output: Short Communication main figure, double-column width, editable SVG/PDF plus high-resolution PNG.",
         "Backend: Python/matplotlib only.",
         "Final size: 7.65 x 6.18 inches before tight bounding-box export.",
         "",

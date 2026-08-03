@@ -31,9 +31,15 @@ machine capacity, or patient-level unmet need.
   80th-growth/20th-density percentiles retained 16.
 - Restriction to 125 countries with DIRAC records dated 2023 or later retained
   all 16 eligible primary countries; 7 primary countries had older records.
+- Sixteen primary countries were retained under all seven alternative
+  specifications, and 20 were retained under at least six.
 - With 17 high-growth countries lacking resource matches, the global
   identification interval was 12.4%-21.5%; the African Region interval was
   38.3%-59.6%. These are missing-data bounds, not confidence intervals.
+
+Inventory completeness is not treated as a neutral quality issue. A
+complete-case-only screen can reward stronger reporting systems, so
+resource-unknown countries remain eligible for capacity verification.
 
 ## Repository Contents
 
@@ -41,8 +47,8 @@ machine capacity, or patient-level unmet need.
   country-level dataset used by the final figure and stability analyses.
 - `data/figure_1_country_source_data.csv` and
   `data/figure_1_region_source_data.csv`: Figure 1 source data.
-- `data/table_15_radiology_research_letter_country_characteristics.csv`: final
-  manuscript Table 1 source.
+- `data/table_15_radiology_research_letter_country_characteristics.csv`: legacy
+  country-characteristics table retained for reproducibility.
 - `data/table_19_burden_version_reclassification.csv`: version transitions.
 - `data/table_20_denominator_threshold_stability.csv`: denominator and
   threshold sensitivity.
@@ -57,6 +63,12 @@ machine capacity, or patient-level unmet need.
   recency analysis and country detail.
 - `data/table_27_country_stability_updated.csv`: updated country-level Table 1 source.
 - `data/table_28_stability_summary.csv`: compact policy-facing stability table.
+- `data/table_29_radiotherapy_oncology_stability.csv`: compact main-table source
+  for the Radiotherapy and Oncology Short Communication.
+- `data/table_30_radiotherapy_oncology_primary_summary.csv`: primary-group
+  burden, unit-pressure, support, and record-recency summary.
+- `data/radiotherapy_oncology_short_communication_summary.json`: machine-readable
+  summary generated with the journal-specific analysis script.
 - `figures/`: Figure 1 in SVG, PDF, and PNG formats.
 - `docs/expanded_methods.md`: expanded reproducibility methods; this is
   repository documentation, not a formal journal supplement.
@@ -68,6 +80,7 @@ machine capacity, or patient-level unmet need.
 ```bash
 pip install -r requirements.txt
 python scripts/make_radiotherapy_resource_mismatch_figure.py
+python scripts/analyze_radiotherapy_oncology_short_communication.py
 ```
 
 The figure script uses the included derived dataset, common-baseline version

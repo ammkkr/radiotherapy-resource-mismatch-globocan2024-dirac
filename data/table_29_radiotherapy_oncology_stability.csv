@@ -1,0 +1,8 @@
+﻿Analysis,"Countries analyzed, No.",Definition,"Countries meeting both, No.",Primary countries retained,Classification changes or uncertainty
+Primary selected-site screen,150,Q75 growth; Q25 MV-unit density using 2050 cases,23,Reference,None
+"Burden versions, common 2025 baseline",149,Version-specific Q75/Q25 thresholds; fixed DIRAC snapshot,24 / 24,23/24 version-2022 countries,New: PNG; no longer: ZWE; Jaccard 0.92
+All-cancer burden,150,All-cancer growth and 2050 all-cancer density,25,23/23,"Added: TGO, TJK"
+2024-case density denominator,150,Primary growth; Q25 MV-unit density using 2024 cases,21,21/23,"Not retained: GTM, SYR"
+Stricter relative thresholds,150,Q80 growth; Q20 MV-unit density using 2050 cases,16,16/23,"Not retained: GHA, GTM, KEN, MDG, PNG, RWA, SYR"
+Cross-specification support,23 primary countries,"Seven alternative burden, denominator, horizon, and resource definitions",Not applicable,16/23 in all 7; 20/23 in at least 6,Support ranged from 4 to 7 specifications
+DIRAC records dated 2023 or later,125,Q75/Q25 thresholds recalculated among recent records,19,16/16 eligible,"Seven primary records were older; added: NAM, NIC, TGO"
