@@ -1,0 +1,385 @@
+{
+  "accessed_utc": "2026-09-08T19:10:10.859751+00:00",
+  "queries": [
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/4_8_12_24_31_32_36_40_44_48/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk01.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/50_51_52_56_64_68_70_72_76_84/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk02.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/90_96_100_104_108_112_116_120_124_132/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk03.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/140_144_148_152_160_170_174_178_180_188/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk04.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/191_192_196_203_204_208_214_218_222_226/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk05.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/231_232_233_242_246_250_254_258_262_266/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk06.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/268_270_275_276_288_300_312_316_320_324/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk07.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/328_332_340_348_352_356_360_364_368_372/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk08.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/376_380_384_388_392_398_400_404_408_410/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk09.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/414_417_418_422_426_428_430_434_440_442/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk10.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/450_454_458_462_466_470_474_478_480_484/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk11.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/496_498_499_504_508_512_516_524_528_540/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk12.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/548_554_558_562_566_578_586_591_598_600/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk13.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/604_608_616_620_624_626_630_634_638_642/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk14.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/643_646_662_678_682_686_688_694_702_703/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk15.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/704_705_706_710_716_724_728_729_740_748/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk16.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/752_756_760_762_764_768_780_784_788_792/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk17.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/795_800_804_807_818_826_834_840_854_858/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk18.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/0/0/860_862_882_887_894/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type0_chunk19.json",
+      "rows": 70
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/4_8_12_24_31_32_36_40_44_48/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk01.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/50_51_52_56_64_68_70_72_76_84/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk02.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/90_96_100_104_108_112_116_120_124_132/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk03.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/140_144_148_152_160_170_174_178_180_188/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk04.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/191_192_196_203_204_208_214_218_222_226/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk05.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/231_232_233_242_246_250_254_258_262_266/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk06.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/268_270_275_276_288_300_312_316_320_324/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk07.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/328_332_340_348_352_356_360_364_368_372/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk08.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/376_380_384_388_392_398_400_404_408_410/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk09.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/414_417_418_422_426_428_430_434_440_442/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk10.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/450_454_458_462_466_470_474_478_480_484/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk11.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/496_498_499_504_508_512_516_524_528_540/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk12.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/548_554_558_562_566_578_586_591_598_600/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk13.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/604_608_616_620_624_626_630_634_638_642/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk14.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/643_646_662_678_682_686_688_694_702_703/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk15.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/704_705_706_710_716_724_728_729_740_748/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk16.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/752_756_760_762_764_768_780_784_788_792/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk17.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/795_800_804_807_818_826_834_840_854_858/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk18.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2022/data/prediction/1/0/860_862_882_887_894/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2022_type1_chunk19.json",
+      "rows": 70
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/4_8_12_24_31_32_36_40_44_48/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk01.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/50_51_52_56_64_68_70_72_76_84/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk02.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/90_96_100_104_108_112_116_120_124_132/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk03.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/140_144_148_152_156_170_174_178_180_188/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk04.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/191_192_196_203_204_208_214_218_222_226/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk05.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/231_232_233_242_246_250_254_258_262_266/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk06.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/268_270_275_276_288_300_312_316_320_324/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk07.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/328_332_340_348_352_356_360_364_368_372/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk08.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/376_380_384_388_392_398_400_404_408_410/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk09.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/414_417_418_422_426_428_430_434_440_442/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk10.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/450_454_458_462_466_470_474_478_480_484/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk11.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/496_498_499_504_508_512_516_524_528_531/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk12.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/540_548_554_558_562_566_578_586_591_598/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk13.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/600_604_608_616_620_624_626_630_634_638/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk14.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/642_643_646_662_678_682_686_688_694_702/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk15.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/703_704_705_706_710_716_724_728_729_740/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk16.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/748_752_756_760_762_764_768_780_784_788/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk17.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/792_795_800_804_807_818_826_834_840_854/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk18.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/0/0/858_860_862_882_887_894/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type0_chunk19.json",
+      "rows": 84
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/4_8_12_24_31_32_36_40_44_48/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk01.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/50_51_52_56_64_68_70_72_76_84/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk02.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/90_96_100_104_108_112_116_120_124_132/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk03.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/140_144_148_152_156_170_174_178_180_188/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk04.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/191_192_196_203_204_208_214_218_222_226/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk05.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/231_232_233_242_246_250_254_258_262_266/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk06.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/268_270_275_276_288_300_312_316_320_324/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk07.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/328_332_340_348_352_356_360_364_368_372/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk08.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/376_380_384_388_392_398_400_404_408_410/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk09.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/414_417_418_422_426_428_430_434_440_442/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk10.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/450_454_458_462_466_470_474_478_480_484/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk11.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/496_498_499_504_508_512_516_524_528_531/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk12.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/540_548_554_558_562_566_578_586_591_598/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk13.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/600_604_608_616_620_624_626_630_634_638/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk14.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/642_643_646_662_678_682_686_688_694_702/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk15.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/703_704_705_706_710_716_724_728_729_740/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk16.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/748_752_756_760_762_764_768_780_784_788/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk17.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/792_795_800_804_807_818_826_834_840_854/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk18.json",
+      "rows": 140
+    },
+    {
+      "url": "https://gco.iarc.who.int/gateway_prod/api/globocan/v3/2024/data/prediction/1/0/858_860_862_882_887_894/9_15/?prediction_annual=1&ages_group=0_17",
+      "file": "v2024_type1_chunk19.json",
+      "rows": 84
+    }
+  ]
+}

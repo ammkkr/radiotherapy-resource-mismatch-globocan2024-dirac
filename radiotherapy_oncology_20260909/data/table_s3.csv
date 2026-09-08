@@ -1,0 +1,20 @@
+Analysis,Countries analyzed,Countries meeting both,Eligible primary,Primary retained
+Primary,150,23,23,23
+All cancers excluding NMSC,150,25,23,23
+Baseline case denominator,150,21,23,21
+Stricter percentiles,150,17,23,17
+2040 horizon,150,23,23,22
+Centre density,150,25,23,22
+Mortality growth,150,24,23,23
+Baseline at least 1000 cases,143,23,23,23
+Thirteen-site extraction without rectum,150,23,23,23
+DIRAC update 2023 or later,125,19,16,16
+DIRAC update 2024 or later,109,15,12,12
+DIRAC update 2025 or later,94,12,10,10
+DIRAC update 2026 or later,68,9,8,8
+"Add 1 unit(s), fixed thresholds",150,23,23,23
+"Add 2 unit(s), fixed thresholds",150,23,23,23
+"Add 5 unit(s), fixed thresholds",150,20,23,20
+"Inventory x0.8, fixed thresholds",150,24,23,23
+"Inventory x1.2, fixed thresholds",150,23,23,23
+"Inventory x1.5, fixed thresholds",150,20,23,20

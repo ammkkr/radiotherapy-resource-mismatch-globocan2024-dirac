@@ -1,0 +1,11 @@
+Comparison,"Analyzed, n","Selected, n",Retained / reference,Definition or consequence
+Primary 14-site screen,150,23,Reference,117.5% growth; 0.471 MV units/1000 future cases
+Releases; recalculated cutoffs,149,24 / 24,23/24,Common 2025 baseline; Papua New Guinea entered; Zimbabwe exited; Jaccard 0.92
+Releases; fixed 2022 cutoffs,149,23,22/24,Papua New Guinea entered; Togo and Zimbabwe exited
+All cancers excluding NMSC,150,25,23/23,Aggregate code 40 only; Tajikistan and Togo added
+Baseline-case density,150,21,21/23,Guatemala and Syrian Arab Republic not retained
+Stricter percentiles,150,17,17/23,80th growth / 20th density percentiles
+Seven alternative specifications,23,Not applicable,16/23 all seven,21/23 selected in at least six
+Update year 2023 or later,125,19,16/16,Seven primary records ineligible; thresholds recalculated
+Update year 2025 or later,94,12,10/10,Thirteen primary records ineligible; thresholds recalculated
+Two additional units per country,150,23,23/23,Illustrative count perturbation; primary cutoffs held fixed

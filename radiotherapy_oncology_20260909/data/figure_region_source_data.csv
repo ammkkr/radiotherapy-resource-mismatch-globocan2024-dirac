@@ -1,0 +1,7 @@
+Group,Category,Countries,Matched,Unmatched,Observed selected,Unmatched high growth,Lower (%),Upper (%)
+WHO region,EURO,50,50,0,0,0,0.0,0.0
+WHO region,SEARO,11,8,3,0,1,0.0,9.1
+WHO region,PAHO,34,30,4,1,2,2.9,8.8
+WHO region,WPRO,21,14,7,1,2,4.8,14.3
+WHO region,EMRO,22,18,4,3,3,13.6,27.3
+WHO region,AFRO,47,29,18,18,10,38.3,59.6

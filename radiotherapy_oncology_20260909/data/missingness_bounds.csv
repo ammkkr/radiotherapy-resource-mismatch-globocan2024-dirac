@@ -1,0 +1,19 @@
+Group,Category,Countries,Matched,Unmatched,Observed selected,Unmatched high growth,Lower (%),Upper (%)
+Global,All countries,186,150,36,23,18,12.4,22.0
+WHO region,AFRO,47,29,18,18,10,38.3,59.6
+WHO region,EMRO,22,18,4,3,3,13.6,27.3
+WHO region,EURO,50,50,0,0,0,0.0,0.0
+WHO region,PAHO,34,30,4,1,2,2.9,8.8
+WHO region,SEARO,11,8,3,0,1,0.0,9.1
+WHO region,WPRO,21,14,7,1,2,4.8,14.3
+WHO region,,1,1,0,0,0,0.0,0.0
+Income group,High income,54,51,3,0,0,0.0,0.0
+Income group,Low income,27,15,12,13,9,48.1,81.5
+Income group,Lower middle income,53,37,16,9,7,17.0,30.2
+Income group,Upper middle income,47,43,4,1,1,2.1,4.3
+Income group,,5,4,1,0,1,0.0,20.0
+HDI group,High HDI,43,37,6,0,3,0.0,7.0
+HDI group,Low HDI,33,18,15,14,10,42.4,72.7
+HDI group,Medium HDI,38,27,11,9,4,23.7,34.2
+HDI group,Very High HDI,62,62,0,0,0,0.0,0.0
+HDI group,,10,6,4,0,1,0.0,10.0

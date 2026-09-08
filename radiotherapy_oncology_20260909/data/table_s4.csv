@@ -1,0 +1,7 @@
+Comparison,Countries,Spearman rho
+Selected-site and all-cancer growth (excluding NMSC),150,0.997
+Selected-site and population growth,150,0.904
+Selected-site growth and 2050-case density,150,-0.693
+Selected-site growth and 2024-case density,150,-0.361
+"2022 and 2024 releases, common 2025-2050 growth",149,0.933
+"2022 and 2024 releases, 2050-case density",149,0.967

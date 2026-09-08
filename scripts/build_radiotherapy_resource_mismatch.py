@@ -117,6 +117,7 @@ def build_burden_tables(predictions: list[dict[str, str]]) -> tuple[dict[str, di
     rt_mortality: dict[tuple[str, str], float] = defaultdict(float)
     all_incidence: dict[tuple[str, str], float] = defaultdict(float)
     all_mortality: dict[tuple[str, str], float] = defaultdict(float)
+    seen: set[tuple[str, str, str, str]] = set()
     population: dict[tuple[str, str], float] = {}
 
     for row in predictions:
@@ -143,6 +144,13 @@ def build_burden_tables(predictions: list[dict[str, str]]) -> tuple[dict[str, di
         cancer_code = row.get("cancer_code", "")
         measure = row.get("measure", "")
         count = to_float(row.get("predicted_count"))
+        if cancer_code in rt_codes | {ALL_CANCER_CODE, ALL_CANCER_EXCL_NMSC_CODE}:
+            key = (iso3, year, measure, cancer_code)
+            if key in seen:
+                raise ValueError(f"Duplicate burden record: {key}")
+            seen.add(key)
+            if not math.isfinite(count) or count < 0:
+                raise ValueError(f"Invalid case count: {key}")
         pop = to_float(row.get("pop"))
         if not math.isnan(pop):
             population[(iso3, year)] = pop
@@ -157,20 +165,22 @@ def build_burden_tables(predictions: list[dict[str, str]]) -> tuple[dict[str, di
                 all_incidence[(iso3, year)] += count
             elif measure == "mortality":
                 all_mortality[(iso3, year)] += count
-        elif cancer_code == ALL_CANCER_CODE:
-            # Stored for validation/fallback only when excl-NMSC code is not present.
-            key = (iso3, year)
-            if measure == "incidence" and all_incidence.get(key, 0) == 0:
-                all_incidence[key] += count
-            elif measure == "mortality" and all_mortality.get(key, 0) == 0:
-                all_mortality[key] += count
+        # Code 39 overlaps code 40 and is never added or used as a silent fallback.
+
+    for iso3 in country_meta:
+        for year in YEARS:
+            for measure in ("incidence", "mortality"):
+                missing = {c for c in rt_codes | {ALL_CANCER_EXCL_NMSC_CODE}
+                           if (iso3, year, measure, c) not in seen}
+                if missing:
+                    raise ValueError(f"Incomplete burden set for {iso3}/{year}/{measure}: missing codes {sorted(missing)}")
 
     burden: dict[str, dict[str, Any]] = {}
     for iso3, meta in country_meta.items():
         rec = dict(meta)
         for year in YEARS:
-            rec[f"rt_relevant_cases_{year}"] = rt_incidence.get((iso3, year), float("nan"))
-            rec[f"rt_relevant_deaths_{year}"] = rt_mortality.get((iso3, year), float("nan"))
+            rec[f"selected_site_cases_{year}"] = rt_incidence.get((iso3, year), float("nan"))
+            rec[f"selected_site_deaths_{year}"] = rt_mortality.get((iso3, year), float("nan"))
             rec[f"all_cancer_cases_{year}"] = all_incidence.get((iso3, year), float("nan"))
             rec[f"all_cancer_deaths_{year}"] = all_mortality.get((iso3, year), float("nan"))
             rec[f"population_{year}"] = population.get((iso3, year), float("nan"))

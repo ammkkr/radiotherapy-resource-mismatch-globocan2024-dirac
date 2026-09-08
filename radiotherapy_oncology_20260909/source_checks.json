@@ -1,0 +1,252 @@
+{
+  "checks": [
+    {
+      "check": "2024_raw_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_zero_APC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_long_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_raw_long_row_count",
+      "passed": true,
+      "detail": "116620"
+    },
+    {
+      "check": "2024_raw_long_values",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_supplemental_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_supplemental_parameters",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_lung_anchor_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_lung_anchor_unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_rectum_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_14_sites_every_cell",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_nonnegative_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2024_unique_country_metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_raw_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_zero_APC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_long_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_raw_long_row_count",
+      "passed": true,
+      "detail": "116130"
+    },
+    {
+      "check": "2022_raw_long_values",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_supplemental_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_supplemental_parameters",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_lung_anchor_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_lung_anchor_unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_rectum_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_14_sites_every_cell",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_nonnegative_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "2022_unique_country_metadata",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "dirac_unique_iso",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "country_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "matched_count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "observed_zero_units",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "rectum_addition_increases_cases",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "resource_counts_match_old",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "legacy_double_count_identified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "thirteen_site_matches_legacy_classification",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "density_growth_identity",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 35,
+  "total": 35,
+  "legacy_all_cancer_error": {
+    "old_all_2024_sum": 40109444.0,
+    "correct_all_excluding_nmsc_2024_sum": 19485880,
+    "correct_all_including_nmsc_2024_sum": 20623564,
+    "primary_added_after_rectum": [],
+    "primary_exited_after_rectum": [],
+    "13_site_primary_count": 23
+  },
+  "statistics": {
+    "country_count": 186,
+    "matched_count": 150,
+    "primary_count": 23,
+    "growth_cutoff": 1.1753085501858738,
+    "density_cutoff": 0.47101477432721833,
+    "selected_2024": 10846289,
+    "selected_2050": 16396240,
+    "primary_cases_2024": 341158,
+    "primary_cases_2050": 853352,
+    "primary_units": 103,
+    "primary_increment": 512194,
+    "matched_increment": 5433517,
+    "primary_low_lower_income": 22,
+    "support_all7": 16,
+    "support_ge6": 21,
+    "support_distribution": {
+      "7": 16,
+      "6": 5,
+      "4": 1,
+      "5": 1
+    },
+    "primary_unit_multiplier_to_cutoff_median": 4.35688666252677,
+    "primary_additional_units_to_cross_cutoff_min": 3,
+    "primary_additional_units_to_cross_cutoff_median": 10.0
+  },
+  "version": {
+    "n": 149,
+    "old_count": 24,
+    "new_count": 24,
+    "retained": 23,
+    "new": [
+      "PNG"
+    ],
+    "exited": [
+      "ZWE"
+    ],
+    "jaccard": 0.92,
+    "common_growth_rho": 0.9326392163976056,
+    "thresholds_old": [
+      1.1274834437086092,
+      0.483128965505447
+    ],
+    "thresholds_new": [
+      1.1048967834853576,
+      0.46844989928327163
+    ],
+    "fixed_old_threshold_new_count": 23,
+    "fixed_old_threshold_retained": 22,
+    "fixed_old_threshold_additions": [
+      "PNG"
+    ],
+    "fixed_old_threshold_exits": [
+      "ZWE",
+      "TGO"
+    ]
+  },
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0"
+  }
+}

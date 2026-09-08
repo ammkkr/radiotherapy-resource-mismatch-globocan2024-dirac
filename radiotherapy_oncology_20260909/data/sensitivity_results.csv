@@ -1,0 +1,20 @@
+Analysis,Countries analyzed,Countries meeting both,Eligible primary,Primary retained,Added,Not retained,Ineligible primary,Growth threshold,Density threshold
+Primary,150,23,23,23,,,,1.1753085501858738,0.47101477432721833
+All cancers excluding NMSC,150,25,23,23,TJK;TGO,,,,
+Baseline case denominator,150,21,23,21,,GTM;SYR,,,
+Stricter percentiles,150,17,23,17,,GHA;GTM;KEN;MDG;PNG;SYR,,,
+2040 horizon,150,23,23,22,TJK,RWA,,,
+Centre density,150,25,23,22,MRT;MNG;NIC,GTM,,,
+Mortality growth,150,24,23,23,TJK,,,,
+Baseline at least 1000 cases,143,23,23,23,,,,,
+Thirteen-site extraction without rectum,150,23,23,23,,,,,
+DIRAC update 2023 or later,125,19,16,16,NAM;NIC;TGO,,COD;ETH;MDG;NER;SDN;YEM;ZMB,1.1399256300785017,0.609508329947176
+DIRAC update 2024 or later,109,15,12,12,NAM;NIC;TGO,,AGO;CMR;COD;ETH;MDG;NER;RWA;SDN;SYR;YEM;ZMB,1.093084469968892,0.6184291898577613
+DIRAC update 2025 or later,94,12,10,10,NIC;TGO,,AGO;CMR;COD;ETH;MDG;NER;PNG;RWA;SEN;SDN;SYR;YEM;ZMB,1.0919360881002245,0.6299348492039523
+DIRAC update 2026 or later,68,9,8,8,NGA,,AGO;CMR;COD;ETH;MDG;MOZ;NER;PNG;RWA;SEN;SDN;SYR;BFA;YEM;ZMB,1.059228737348202,0.605873052590929
+"Add 1 unit(s), fixed thresholds",150,23,23,23,,,,,
+"Add 2 unit(s), fixed thresholds",150,23,23,23,,,,,
+"Add 5 unit(s), fixed thresholds",150,20,23,20,,GTM;SEN;SYR,,,
+"Inventory x0.8, fixed thresholds",150,24,23,23,NAM,,,,
+"Inventory x1.2, fixed thresholds",150,23,23,23,,,,,
+"Inventory x1.5, fixed thresholds",150,20,23,20,,GTM;KEN;SYR,,,

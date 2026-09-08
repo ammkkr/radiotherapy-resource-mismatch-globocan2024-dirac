@@ -1,4 +1,11 @@
-# Cancer Tomorrow Burden Updates and Latest-Reported Radiotherapy Capacity
+# Inventory Gaps and Radiotherapy Resource Comparisons
+
+**Correction, 9 September 2026:** Use the [corrected analysis folder](radiotherapy_oncology_20260909/README.md)
+for the current manuscript. Earlier files omitted rectal cancer from a stated
+14-site set and combined overlapping all-cancer aggregate codes. The correction
+documents the effect, completes the site set and supplies independently tested
+reproduction code. Historical files below are retained for traceability and
+must not be treated as the corrected results.
 
 This repository contains derived country-level data, display source data, and
 analysis code for a study linking IARC Global Cancer Observatory Cancer Tomorrow
@@ -28,20 +35,21 @@ machine capacity, or patient-level unmet need.
   Zimbabwe exited in version 2024.
 - The all-cancer definition retained all 23 primary countries.
 - A baseline-case density denominator retained 21 of 23 countries, and stricter
-  80th-growth/20th-density percentiles retained 16.
+  80th-growth/20th-density percentiles retained 17.
 - Restriction to 125 countries with DIRAC records dated 2023 or later retained
   all 16 eligible primary countries; 7 primary countries had older records.
 - Sixteen primary countries were retained under all seven alternative
-  specifications, and 20 were retained under at least six.
-- With 17 high-growth countries lacking resource matches, the global
-  identification interval was 12.4%-21.5%; the African Region interval was
-  38.3%-59.6%. These are missing-data bounds, not confidence intervals.
+  specifications, and 21 were retained under at least six.
+- With 18 high-growth countries lacking resource matches, the global
+  fixed-cutoff interval was 12.4%-22.0%; the African Region interval was
+  38.3%-59.6%. These bounds cover unmatched records only, holding observed
+  counts and cutoffs fixed. They are not confidence intervals or access estimates.
 
 Inventory completeness is not treated as a neutral quality issue. A
 complete-case-only screen can reward stronger reporting systems, so
 resource-unknown countries remain eligible for capacity verification.
 
-## Repository Contents
+## Historical Repository Contents
 
 - `data/radiotherapy_resource_mismatch_country_v6_sensitivity.csv`: integrated
   country-level dataset used by the final figure and stability analyses.
@@ -75,7 +83,23 @@ resource-unknown countries remain eligible for capacity verification.
 - `scripts/`: data-fetch, analysis, and figure-generation code.
 - `MANIFEST.csv` and `checksums_sha256.txt`: public-file inventory and checksums.
 
-## Reproduce Figure 1
+Checksums describe repository blob bytes, with LF newlines for text files.
+Windows checkouts may convert newlines to CRLF; compare the canonical bytes from
+`git show HEAD:path/to/file` when verifying such a checkout. Generated TIFF files,
+Python caches and local reproduction outputs are not part of the public inventory.
+
+## Reproduce the Corrected Analysis
+
+```bash
+pip install -r requirements.txt
+python radiotherapy_oncology_20260909/reproduce.py --data radiotherapy_oncology_20260909/data --output reproduced_ro_20260909
+python radiotherapy_oncology_20260909/make_figure.py
+python scripts/test_burden_integrity.py
+```
+
+## Historical Figure Reproduction
+
+The commands below reproduce the superseded outputs, not the current manuscript.
 
 ```bash
 pip install -r requirements.txt
